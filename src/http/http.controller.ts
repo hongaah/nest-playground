@@ -11,48 +11,21 @@ import {
   UploadedFiles,
 } from '@nestjs/common';
 import { AnyFilesInterceptor } from '@nestjs/platform-express';
-import { PersonService } from './person.service';
+import { HttpService } from './http.service';
 import { CreatePersonDto } from './dto/create-person.dto';
-import { UpdatePersonDto } from './dto/update-person.dto';
 
-@Controller('person')
-export class PersonController {
-  constructor(private readonly personService: PersonService) {}
+/**
+ * http 数据传输的方式主要有 5 种
+ */
+@Controller('/api/http')
+export class HttpController {
+  constructor(private readonly httpService: HttpService) {}
 
-  @Post()
-  create(@Body() createPersonDto: CreatePersonDto) {
-    return this.personService.create(createPersonDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.personService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.personService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePersonDto: UpdatePersonDto) {
-    return this.personService.update(+id, updatePersonDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.personService.remove(+id);
-  }
-}
-
-// 5 种前后端 http 数据传输
-@Controller('api/person')
-export class ApiPersonController {
-  constructor() {}
-
-  // url query
-  // query 字符串放在了 url 里
-  // @Query 装饰器取 url query 注入到 controller
+  /**
+   * url query
+   * query 字符串放在了 url 里，通过 url 中 ？后面的用 & 分隔的字符串传递数据
+   * @Query 装饰器取 url query 注入到 controller 
+   */
   @Get('find')
   query(@Query('name') name: string, @Query('age') age: number) {
     return `received: name=${name},age=${age}`;

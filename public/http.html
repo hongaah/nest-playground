@@ -7,12 +7,13 @@
 </head>
 
 <body>
+  <!-- http://localhost:3000/static/http.html -->
   <input id="fileInput" type="file" multiple />
 
   <script>
     async function urlParam () {
       // url query
-      // const res = await axios.get('/api/person/find', {
+      // const res = await axios.get('/api/http/find', {
       //   params: {
       //     name: 'hong',
       //     age: 18
@@ -20,10 +21,10 @@
       // })
 
       // url param
-      // const res = await axios.get('/api/person/1');
+      // const res = await axios.get('/api/http/1');
 
       // form urlencoded
-      // const res = await axios.post('/api/person', Qs.stringify({
+      // const res = await axios.post('/api/http', Qs.stringify({
       //   params: {
       //     name: 'hong',
       //     age: 18,
@@ -37,16 +38,16 @@
       // })
 
       // json
-      // const res = await axios.post('/api/person', {
-      //   name: 'hong',
-      //   age: 18,
-      //   a: null,
-      //   b: undefined,
-      //   c: null,
-      //   d: undefined
-      // }, {
-      //   headers: { 'content-type': 'application/json' }
-      // })
+      const res = await axios.post('/api/http', {
+        name: 'hong',
+        age: 18,
+        a: null,
+        b: undefined,
+        c: null,
+        d: undefined
+      }, {
+        headers: { 'content-type': 'application/json' }
+      })
 
       console.log(res);
     }
@@ -58,7 +59,7 @@
       data.set('file1', fileInput.files[0]);
       data.set('file2', fileInput.files[1]);
 
-      const res = await axios.post('/api/person/file', data, {
+      const res = await axios.post('/api/http/file', data, {
         headers: { 'content-type': 'multipart/form-data' }
       });
 

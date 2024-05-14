@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class OtherService {
+export class HttpService {
   xxx() {
     return 'xxx';
   }

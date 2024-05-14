@@ -1,4 +1,7 @@
-200 篇
-35 \* (6 - 10) 篇
+数据传输的方式主要有 5 种：
 
-10/d: 5 月底
+url param
+query
+form-urlencoded
+form-data
+json
