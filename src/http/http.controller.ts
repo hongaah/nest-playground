@@ -24,7 +24,7 @@ export class HttpController {
   /**
    * url query
    * query 字符串放在了 url 里，通过 url 中 ？后面的用 & 分隔的字符串传递数据
-   * @Query 装饰器取 url query 注入到 controller 
+   * @Query 装饰器取 url query 注入到 controller
    */
   @Get('find')
   query(@Query('name') name: string, @Query('age') age: number) {
