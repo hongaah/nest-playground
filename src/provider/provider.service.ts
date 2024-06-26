@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { HttpService } from '../http/http.service';
 
 /**
@@ -10,8 +10,10 @@ import { HttpService } from '../http/http.service';
  */
 @Injectable()
 export class ProviderService {
-  @Inject(HttpService)
-  private httpService: HttpService;
+  constructor(private httpService: HttpService) {}
+
+  // @Inject(HttpService)
+  // private httpService: HttpService;
 
   getHello(): string {
     return 'Hello provider!' + this.httpService.getHello();

@@ -23,6 +23,7 @@ npm update -g @nestjs/cli
 
 nest -h
 nest new 项目名
+nest new 项目名 -p npm
 
 nest 命令除了可以生成整个项目外，还可以生成一些别的代码
 nest generate -h // 代码模版的集合是在 @nestjs/schematics 这个包里定义
@@ -30,6 +31,7 @@ nest generate controller aaa
 nest generate module aaa
 nest generate service aaa
 nest generate resource aaa // 完整生成一个模块，支持 http、websocket、graphql、tcp，支持是否生成 CRUD 代码
+nest g resource aaa --no-spec // --no-spec 是不生成测试文件
 
 nest build // --wepback 和 --tsc 是指定用什么编译，默认是 tsc 编译，也可以切换成 webpack。
 nest build --watch // 监听文件变动，自动 build，但是 --watch 默认只是监听 ts、js 文件
