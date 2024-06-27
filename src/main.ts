@@ -1,8 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
-// import { CustomLogger } from './my-logger/CustomLogger';
+// import { WinstonLogger } from './my-winston-logger/WinstonLogger';
 // import { CustomLoggerProvider } from './my-logger/CustomLoggerProvider';
+import { WINSTON_LOGGER_TOKEN } from 'src/my-winston-logger/my-winston-logger.module';
 
 /**
  * logger
@@ -22,6 +23,8 @@ async function bootstrap() {
   });
 
   // app.useLogger(app.get(CustomLoggerProvider));
+  // app.useLogger(new WinstonLogger());
+  app.useLogger(app.get(WINSTON_LOGGER_TOKEN));
 
   app.useStaticAssets('public', {
     prefix: '/static',

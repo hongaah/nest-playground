@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qs@6.10.2/dist/qs.js"></script>
+</head>
+
+<body>
+  <!-- http://localhost:3000/static/log.html -->
+  <h3>log</h3>
+  <button onClick="logPost()">/my-logger/log post</button>
+  <button onClick="customGet()">/my-logger/custom get</button>
+
+  <script>
+    async function logPost () {
+      // 客户端向本地服务发起一个请求，将参数传输到服务器
+      const res = await axios.post('/my-logger/log', {
+        client: 'client'
+      }, {
+        headers: { 'content-type': 'application/json' }
+      })
+
+      console.log(res);
+    }
+    async function customGet () {
+      const res = await axios.get('/my-logger/custom')
+
+      console.log(res);
+    }
+  </script>
+</body>
