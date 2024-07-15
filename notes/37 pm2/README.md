@@ -39,7 +39,7 @@ pm2 start ./dist/main.js --cron-restart "2/3 * * * * *"
 # 不自动重启
 pm2 start ./dist/main.js --no-autorestart
 
-# 设置最大重启次数，避免 pm2 启动后一直闪控制台，屏幕卡顿
+# !!! 设置最大重启次数，避免 pm2 启动后一直闪控制台，屏幕卡顿
 pm2 start app.js --max-restarts 5
 
 pm2 stop ./dist/main.js

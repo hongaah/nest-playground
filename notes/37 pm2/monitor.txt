@@ -1,0 +1,12 @@
+pm2 monitor
+[PM2 I/O] Please follow the popup or go to this URL : 
+      https://id.keymetrics.io/api/oauth/authorize?client_id=138558311&response_mode=query&response_type=token&scope=all
+[PM2 I/O] Successfully authenticated
+[PM2 I/O] Successfully validated
+[PM2 I/O] By default we allow you to trial PM2 Plus for 14 days without any credit card.
+[PM2 I/O] Successfully created the bucket
+[PM2 I/O] Using: Public key: p14h6ihwt9cgvim | Private key: i6o0y2mbz4bkkiq | Machine name: weixiaoh-eee0
+[PM2.IO][WARNING] Not managed to connect to PM2 Plus, retrying in background.
+[+] PM2+ activated!
+[PM2 I/O] Successfully connected to bucket PM2 Plus Monitoring
+[PM2 I/O] You can use the web interface over there: https://app.pm2.io/#/bucket/668f55f0fe520b3f5503e635
