@@ -39,7 +39,7 @@ docker run 这个镜像就可以生成容器，指定映射的端口、挂载的
 通过 xxx-image 镜像跑起来一个叫做 xxx-container 的容器:
 docker run -d -p 8080:8080 -v /data/logs:/logs:ro --name xxx-container xxx-image
 
--d 运行容器，后台运行
+-d 运行容器，后台运行，没有指定时会直接在控制台打印日志
 -p 指定端口映射，映射宿主机的 8080 到容器的 8080 端口，那容器内 8080 端口的服务，就可以在宿主机的 8080 端口访问了
 
 -v 指定数据卷挂载

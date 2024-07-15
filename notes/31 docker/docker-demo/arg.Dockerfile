@@ -13,11 +13,12 @@ ARG bbb
 
 WORKDIR /app
 
-COPY ./test.js .
+COPY ./process-env.js .
 
+# ARG 是构建时的参数，ENV 时运行时的变量
 # 用 ENV 声明环境变量
 # dockerfile 内换行使用 \
 ENV aaa=${aaa} \
     bbb=${bbb}
 
-CMD ["node", "/app/test.js"]
+CMD ["node", "/app/process-env.js"]

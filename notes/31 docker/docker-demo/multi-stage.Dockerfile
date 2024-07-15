@@ -1,7 +1,7 @@
 # 使用多阶段构建，减少镜像内不必要的源码和构建的依赖，这样 docker build 之后，只会留下最后一个阶段的镜像
 
 # build stage
-FROM node:18 as build-stage
+FROM node:18-alpine3.14 as build-stage
 
 WORKDIR /app
 
@@ -18,7 +18,7 @@ RUN npm run build
 
 # production stage
 # FROM 后面添加一个 as 来指定当前构建阶段的名字
-FROM node:18 as production-stage
+FROM node:18-alpine3.14 as production-stage
 
 # 通过 COPY --from=xxx 可以从上个阶段复制文件过来
 COPY --from=build-stage /app/dist /app

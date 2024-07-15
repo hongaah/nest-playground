@@ -1,8 +1,12 @@
 *.md
 !README.md
 node_modules/
-[a-c].txt
 .git/
+
+# 忽略 a.txt、b.txt、c.txt
+[a-c].txt
+# .DS_Store 是 mac 的用于指定目录的图标、背景、字体大小的配置文件，这个一般都要忽略
+
 .DS_Store
 .vscode/
 .dockerignore
