@@ -1,8 +1,9 @@
 # 使用 ARG 增加构建灵活性
 
 # 通过 --build-arg xxx=yyy 传入 ARG 参数的值
-# docker build --build-arg aaa=3 --build-arg bbb=4 -t arg-test -f 333.Dockerfile .
+# docker build --build-arg aaa=3 --build-arg bbb=4 -t arg-test -f arg.Dockerfile .
 # 点击查看镜像详情，可以看到 ARG 已经被替换为具体的值了
+# docker run  --name arg-container arg-test
 
 # 使用 18 版本的 node 镜像，体积量小的基础镜像 alpine linux 发行版
 FROM node:18-alpine3.14

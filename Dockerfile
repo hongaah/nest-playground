@@ -2,12 +2,12 @@ FROM node:20-alpine3.20 as build-stage
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json .
 
 RUN npm config set registry https://registry.npmmirror.com/
 
-RUN npm install -g pnpm
-RUN pnpm install
+RUN npm install -g cnpm
+RUN cnpm install
 
 COPY . .
 
@@ -23,7 +23,8 @@ WORKDIR /app
 
 RUN npm config set registry https://registry.npmmirror.com/
 
-RUN pnpm install --prod
+RUN npm install -g cnpm
+RUN cnpm install --production
 
 EXPOSE 3000
 
