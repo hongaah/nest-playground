@@ -2,6 +2,19 @@
 SELECT * FROM student WHERE age = (SELECT MAX(age) FROM student);
 SELECT * FROM student WHERE age > (SELECT AVG(age) FROM student);
 
+INSERT INTO avg_price_by_category (category, avg_price) 
+    SELECT category, AVG(price) FROM product GROUP BY category;
+
+UPDATE employee SET name = CONCAT('技术-', name) 
+    WHERE department_id = (
+        SELECT id FROM department WHERE name = '技术部'
+    );
+
+DELETE FROM employee WHERE department_id = (
+    SELECT id FROM department WHERE name = '技术部'
+);
+
+
 -- EXISTS、NOT EXISTS
 -- 查询有员工的部门，子查询返回结果，条件成立，反之不成立。
 SELECT name FROM department
