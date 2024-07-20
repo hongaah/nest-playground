@@ -58,7 +58,7 @@ SELECT name as 名字, age as 年龄 FROM new_schema_demo.student where age >= 1
 -- 条件可以是 and 连接的多个
 SELECT name as 名字, age as 年龄 FROM new_schema_demo.student where age >= 19 and sex = '0';
 -- 可以用 LIKE 做模糊查询
-select * from new_schema_demo.student where name like '王%';
+select * from new_schema_demo.student where name like '陈%';
 -- 通过 in 来指定一个集合
 select * from new_schema_demo.student where age in (17, 18, 19);
 -- 也可以 not in

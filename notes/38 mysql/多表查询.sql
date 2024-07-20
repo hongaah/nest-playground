@@ -10,10 +10,7 @@ UPDATE employee SET name = CONCAT('技术-', name)
         SELECT id FROM department WHERE name = '技术部'
     );
 
-DELETE FROM employee WHERE department_id = (
-    SELECT id FROM department WHERE name = '技术部'
-);
-
+DELETE FROM employee WHERE department_id = (SELECT id FROM department WHERE name = '技术部');
 
 -- EXISTS、NOT EXISTS
 -- 查询有员工的部门，子查询返回结果，条件成立，反之不成立。
