@@ -19,4 +19,10 @@ mysql -u root -p
 show databases;
 ```
 
+## Node 里操作数据库的两种方式
 
+一种是直接用 mysql2 连接数据库，发送 sql 来执行。🌰：node-mysql2
+
+一种是用 ORM 库，比如 typeorm，它是基于 class 和 class 上的装饰器来声明和表的映射关系的，然后对表的增删改查就变成了对象的操作以及 save、find 等方法的调用，它会自动生成对应的 sql。🌰：node-TypeORM
+
+主流的方案还是 ORM 的方案
