@@ -80,6 +80,21 @@ SELECT name, age, create_time FROM new_schema_demo.student order by create_time 
 -- 聚合函数：用于对数据的统计，比如 AVG、COUNT、SUM、MIN、MAX
 select avg(age) as 平均年龄,count(*) as 人数,sum(age) as 总年龄,min(age) as 最低龄, max(age) as 最高龄 from new_schema_demo.student; 
 
+-- GROUP_CONCAT 函数，用于 group by 分组后，把多个值连接成一个字符串的。
+-- 把分组的多条商品名用 - 连接起来 GROUP_CONCAT(oi.product_name SEPARATOR '-')
+SELECT 
+  c.name AS customer_name,
+  SUM(o.total_amount) AS total_amount,
+  COUNT(oi.id) AS total_quantity,
+  GROUP_CONCAT(oi.product_name SEPARATOR '-') AS product_names
+    FROM customers c
+    JOIN orders o ON c.id = o.customer_id
+    JOIN order_items oi ON o.id = oi.order_id
+    WHERE oi.product_name LIKE '%鞋%'
+    GROUP BY c.name
+    ORDER BY total_amount DESC
+    LIMIT 3;
+
 -- 内置函数 count, * 就代表当前行, 统计表里有多少行
 select count(*) as count from new_schema_demo.student;
 -- 统计性别分别有多少人
