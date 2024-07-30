@@ -31,3 +31,9 @@ docker start
 docker rm
 # 停止一个容器
 docker stop
+
+# 用于在宿主机和容器之间复制文件和目录的
+docker cp nginx1:/usr/share/nginx/html ~/nginx-html
+docker cp  ~/nginx-html nginx1:/usr/share/nginx/html-xxx
+
+## docker-compose
