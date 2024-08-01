@@ -36,3 +36,30 @@ nginx
 # 重启 Nginx 服务
 nginx -s reload
 ```
+
+
+## 日志报错 2024/08/01 16:18:38 [error] 63284#70448: *4 CreateFile() "E:\nginx-1.26.1/html/222" failed (2: The system cannot find the file specified), client: 192.168.153.144, server: localhost, request: "GET /222 HTTP/1.1", host: "192.168.153.144"
+
+在 Nginx 配置中，return 200 $uri; 会尝试返回请求的 URI 作为响应内容。但是，如果指定的文件不存在，Nginx 会尝试从文件系统读取该文件，这会导致错误。你看到的错误消息表明 Nginx 在尝试访问路径 E:\nginx-1.26.1/html/222 时找不到文件。
+
+要解决这个问题并返回请求的 URI 作为纯文本响应，可以使用 return 指令直接返回一个固定的字符串，而不是尝试从文件系统读取文件。
+
+```conf
+server {
+    listen 80;
+    server_name localhost;
+
+    location /222 {
+        default_type text/plain;
+        # 注意，这里使用双引号将 $uri 变量括起来，以确保其被正确解析。
+        return 200 "$uri";
+    }
+
+    # 根位置，避免文件系统查找
+    location / {
+        root   html;
+        index  index.html index.htm;
+    }
+}
+
+```
