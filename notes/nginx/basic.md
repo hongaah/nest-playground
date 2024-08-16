@@ -94,6 +94,13 @@ location /xxx {
     try_files $uri $uri/ /index.html;
 }
 
+# 配置一个静态文件服务，将特定的 URL 路径映射到一个 PDF 文件
+location /download/myfile {
+    alias /path/to/your/file/myfile.pdf;
+    add_header Content-Type application/pdf;
+    add_header Content-Disposition "inline; filename=myfile.pdf";
+}
+
 # 根位置，避免文件系统查找
 ; location / {
 ;     root   html;
