@@ -8,6 +8,7 @@ import { MyLoggerModule } from './my-logger/my-logger.module';
 import { TestGlobalModule } from './test-global/test-global.module';
 import { MyWinstonLoggerModule } from './my-winston-logger/my-winston-logger.module';
 import { SwaggerModule } from './swagger/swagger.module';
+import { RedisModule } from './redis/redis.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { SwaggerModule } from './swagger/swagger.module';
     TestGlobalModule,
     MyWinstonLoggerModule,
     SwaggerModule,
+    RedisModule,
   ],
   controllers: [AppController],
   providers: [AppService],
