@@ -32,6 +32,7 @@ nest generate module aaa
 nest generate service aaa
 nest generate resource aaa // 完整生成一个模块，支持 http、websocket、graphql、tcp，支持是否生成 CRUD 代码
 nest g resource aaa --no-spec // --no-spec 是不生成测试文件
+nest g interceptor my-cache --no-spec --flat // 创建一个 interceptor --flat 是生成到当前目录，而不是生成到 src/interceptors 目录下
 
 nest build // --wepback 和 --tsc 是指定用什么编译，默认是 tsc 编译，也可以切换成 webpack。
 nest build --watch // 监听文件变动，自动 build，但是 --watch 默认只是监听 ts、js 文件
