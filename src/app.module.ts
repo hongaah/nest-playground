@@ -10,6 +10,7 @@ import { MyWinstonLoggerModule } from './my-winston-logger/my-winston-logger.mod
 import { SwaggerModule } from './swagger/swagger.module';
 import { RedisModule } from './redis/redis.module';
 import { CacheManagerModule } from './cache-manager/cache-manager.module';
+import { MyMongooseModule } from './my-mongoose/my-mongoose.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { CacheManagerModule } from './cache-manager/cache-manager.module';
     SwaggerModule,
     RedisModule,
     CacheManagerModule,
+    MyMongooseModule,
   ],
   controllers: [AppController],
   providers: [AppService],

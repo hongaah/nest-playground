@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qs@6.10.2/dist/qs.js"></script>
+</head>
+
+<body>
+  <!-- http://localhost:3000/static/mongoose.html -->
+  <h3>mongoose</h3>
+  <button onClick="addDog()">/my-mongoose/dog post addDog</button>
+  <button onClick="getDog()">/my-mongoose/dog get dog</button>
+  <button onClick="updateDog()">/my-mongoose/dog path dog</button>
+  <button onClick="deleteDog()">/my-mongoose/dog delete dog</button>
+
+  <script>
+    async function addDog () {
+      // 客户端向本地服务发起一个请求，将参数传输到服务器
+      const res = await axios.post('/my-mongoose/dog', {
+        name: 'aaa',
+        age: 18
+      }, {
+        headers: { 'content-type': 'application/json' }
+      })
+
+      console.log(res);
+    }
+    async function updateDog () {
+      // 客户端向本地服务发起一个请求，将参数传输到服务器
+      const res = await axios.patch('/my-mongoose/dog' + '/' + '66c596d6d88e44e156a4f86d', {
+        name: 'ab',
+        age: 18
+      }, {
+        headers: { 'content-type': 'application/json' }
+      })
+
+      console.log(res);
+    }
+    async function deleteDog () {
+      // 客户端向本地服务发起一个请求，将参数传输到服务器
+      const res = await axios.delete('/my-mongoose/dog' + '/' + '66c596d6d88e44e156a4f86d', {}, {
+        headers: { 'content-type': 'application/json' }
+      })
+
+      console.log(res);
+    }
+    async function getDog () {
+      const res = await axios.get('/my-mongoose/dog')
+
+      console.log(res);
+    }
+  </script>
+</body>
