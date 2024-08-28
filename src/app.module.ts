@@ -7,10 +7,10 @@ import { LifecycleModule } from './lifecycle/lifecycle.module';
 import { MyLoggerModule } from './my-logger/my-logger.module';
 import { TestGlobalModule } from './test-global/test-global.module';
 import { MyWinstonLoggerModule } from './my-winston-logger/my-winston-logger.module';
-import { SwaggerModule } from './swagger/swagger.module';
+// import { SwaggerModule } from './swagger/swagger.module';
 import { RedisModule } from './redis/redis.module';
-import { CacheManagerModule } from './cache-manager/cache-manager.module';
-import { MyMongooseModule } from './my-mongoose/my-mongoose.module';
+// import { CacheManagerModule } from './cache-manager/cache-manager.module';
+// import { MyMongooseModule } from './my-mongoose/my-mongoose.module';
 
 @Module({
   imports: [
@@ -20,10 +20,10 @@ import { MyMongooseModule } from './my-mongoose/my-mongoose.module';
     MyLoggerModule,
     TestGlobalModule,
     MyWinstonLoggerModule,
-    SwaggerModule,
+    // SwaggerModule,
     RedisModule,
-    CacheManagerModule,
-    MyMongooseModule,
+    // CacheManagerModule,
+    // MyMongooseModule,
   ],
   controllers: [AppController],
   providers: [AppService],
