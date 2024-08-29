@@ -1,4 +1,4 @@
-# aop
+# aop 面向切面编程
 
 AOP （Aspect Oriented Programming）:面向切面编程，可以把一些通用逻辑分离到切面中，保持业务逻辑的纯粹性，这样切面逻辑可以复用，还可以动态的增删。一般用在调用 Controller 之前和之后。
 

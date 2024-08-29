@@ -1,7 +1,7 @@
 import {
   Get,
-  UseGuards,
   Controller,
+  UseGuards,
   UseInterceptors,
   UsePipes,
   UseFilters,
@@ -17,7 +17,7 @@ import {
 
 @Controller('aop')
 // @UseInterceptors(TimeInterceptor)
-// @UsePipes(ValidatePipe)
+@UsePipes(ValidatePipe)
 @UseFilters(TestFilter)
 export class AopController {
   constructor(private readonly aopService: AopService) {}

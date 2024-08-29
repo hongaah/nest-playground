@@ -83,8 +83,6 @@ pm2 scale main 3
 pm2 scale main +3
 
 pm2 start ./dist/main.js --instances 4 --exec-mode cluster
-
-
 ```
 
 ## 性能监控

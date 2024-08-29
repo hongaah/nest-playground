@@ -1,3 +1,5 @@
+# provider
+
 一般情况下，provider 是通过 @Injectable 声明，然后在 @Module 的 providers 数组里注册的 class。
 
 默认的 token 就是 class，这样不用使用 @Inject 来指定注入的 token。

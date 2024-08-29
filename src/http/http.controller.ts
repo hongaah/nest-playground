@@ -5,6 +5,11 @@ import {
   Body,
   Param,
   Query,
+  Put,
+  Delete,
+  Patch,
+  Options,
+  Head,
   UseInterceptors,
   UploadedFiles,
 } from '@nestjs/common';
@@ -69,5 +74,30 @@ export class HttpController {
   ) {
     console.log(files);
     return `received: ${JSON.stringify(createPersonDto)}`;
+  }
+
+  @Put()
+  testPut() {
+    return 'test put';
+  }
+
+  @Delete()
+  testDelete() {
+    return 'I am Delete';
+  }
+
+  @Patch()
+  testPatch() {
+    return 'I am Patch';
+  }
+
+  @Options()
+  testOptions() {
+    return 'I am Options';
+  }
+
+  @Head()
+  testHead() {
+    return 'I am Head';
   }
 }

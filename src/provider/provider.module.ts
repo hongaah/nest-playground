@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ProviderService } from './provider.service';
 import { ProviderController } from './provider.controller';
 import { HttpModule } from 'src/http/http.module';
+import { AnyProvider } from './AnyProvider';
 
 // http://localhost:3000/provider
 
@@ -20,6 +21,7 @@ import { HttpModule } from 'src/http/http.module';
     // 直接指定 class
     // ProviderService,
     // 使用 useClass 指定 class，等价以上。useClass 的方式由 IoC 容器负责实例化，我们也可以用 useValue、useFactory 直接指定对象。
+    AnyProvider,
     {
       provide: ProviderService, // 指定 token，可以自定义如 'provider_service'
       useClass: ProviderService, // 指定对象的类

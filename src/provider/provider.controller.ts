@@ -1,5 +1,6 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 import { ProviderService } from './provider.service';
+import { AnyProvider } from './AnyProvider';
 
 /**
  * @Controller
@@ -21,12 +22,18 @@ export class ProviderController {
    */
   // constructor(@Inject(ProviderService) private readonly providerService: ProviderService) {}
   // constructor(private readonly providerService: ProviderService) {}
+  constructor(private readonly anyProvider: AnyProvider) {}
 
   @Inject(ProviderService) private readonly providerService: ProviderService;
   @Inject('person') private readonly person: { name: string; age: number };
   @Inject('person2') private readonly person2: { name: string; age: number };
   @Inject('person3') private readonly person3: { name: string; desc: string };
   @Inject('person4') private readonly person4: { name: string; desc: string };
+
+  @Get('anyProvider')
+  getAnyProvider(): string {
+    return this.anyProvider.getHello();
+  }
 
   @Get()
   getHello(): string {

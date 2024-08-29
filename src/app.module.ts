@@ -20,6 +20,7 @@ import {
 } from 'src/aop/concept';
 // import { CacheManagerModule } from './cache-manager/cache-manager.module';
 // import { MyMongooseModule } from './my-mongoose/my-mongoose.module';
+import { DecoratorModule } from './decorator/decorator.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import {
     // SwaggerModule,
     RedisModule,
     AopModule,
+    DecoratorModule,
     // CacheManagerModule,
     // MyMongooseModule,
   ],
