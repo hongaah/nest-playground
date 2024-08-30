@@ -28,8 +28,7 @@ import { DecoratorService } from './decorator.service';
 import { CreateDecoratorDto } from './dto/create-decorator.dto';
 import { UpdateDecoratorDto } from './dto/update-decorator.dto';
 import { LoginGuard, TimeInterceptor } from 'src/aop/concept';
-import { CommonFilter } from './common.filter';
-import { AuthGuard } from './auth.guard';
+import { CommonFilter, AuthGuard } from './config/index';
 
 @Controller('decorator')
 @SetMetadata('roles', ['user'])
@@ -133,6 +132,23 @@ export class DecoratorController {
   @Get('test-session')
   testSession(@Session() session: Record<string, any>) {
     console.log('session', session);
-    return `I am session ${session}`;
+    /**
+     Session { 
+      cookie: {
+        path: '/',
+        _expires: 2024-09-06T01:47:02.889Z,
+        originalMaxAge: 604800000,
+        httpOnly: true
+      },
+      count: 1
+    }
+     * 
+    */
+
+    if (!session.count) {
+      session.count = 0;
+    }
+    session.count = session.count + 1;
+    return `session count: ${session.count}`;
   }
 }
