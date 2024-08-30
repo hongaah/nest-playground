@@ -25,3 +25,13 @@
 @Header：修改响应头
 @Redirect：指定重定向的 url
 @Render：指定渲染用的模版引擎
+
+## 自定义装饰器
+
+- 自定义 class 装饰器 Controller：就是一个函数，传入参数，调用下别的装饰器
+- 自定义 handler 装饰器：和 class 装饰器一样，传入参数，调用下别的装饰器
+- 自定义参数装饰器：createParamDecorator，它能拿到 ExecutionContext，进而拿到 reqeust、response，可以实现很多内置装饰器的功能，比如 @Query、@Headers 等装饰器。还能使用内置装饰器 Pipe 做参数验证和转换
+
+作用：
+封装一段逻辑
+将多个装饰器组合成一个装饰器 applyDecorators
