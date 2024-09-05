@@ -21,6 +21,7 @@ import {
 // import { CacheManagerModule } from './cache-manager/cache-manager.module';
 // import { MyMongooseModule } from './my-mongoose/my-mongoose.module';
 import { DecoratorModule } from './decorator/decorator.module';
+import { ExecutionContextModule } from './execution-context/execution-context.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { DecoratorModule } from './decorator/decorator.module';
     RedisModule,
     AopModule,
     DecoratorModule,
+    ExecutionContextModule,
     // CacheManagerModule,
     // MyMongooseModule,
   ],
