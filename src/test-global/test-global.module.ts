@@ -1,13 +1,16 @@
-import { Module } from '@nestjs/common';
+import { Global, forwardRef, Module } from '@nestjs/common';
 import { TestGlobalService } from './test-global.service';
 import { TestGlobalController } from './test-global.controller';
 import { MyLoggerModule } from '../my-logger/my-logger.module';
 import { MyWinstonLoggerModule } from '../my-winston-logger/my-winston-logger.module';
+import { CircularDependencyModule } from 'src/circular-dependency/circular-dependency.module';
 import { format, transports } from 'winston';
 import * as chalk from 'chalk';
 
+@Global()
 @Module({
   imports: [
+    forwardRef(() => CircularDependencyModule),
     // 导入一个动态模块，logger
     MyLoggerModule.register({
       x: 1,
@@ -40,5 +43,6 @@ import * as chalk from 'chalk';
   ],
   controllers: [TestGlobalController],
   providers: [TestGlobalService],
+  exports: [TestGlobalService],
 })
 export class TestGlobalModule {}

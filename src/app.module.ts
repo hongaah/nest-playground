@@ -22,6 +22,7 @@ import {
 // import { MyMongooseModule } from './my-mongoose/my-mongoose.module';
 import { DecoratorModule } from './decorator/decorator.module';
 import { ExecutionContextModule } from './execution-context/execution-context.module';
+import { CircularDependencyModule } from './circular-dependency/circular-dependency.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { ExecutionContextModule } from './execution-context/execution-context.mo
     AopModule,
     DecoratorModule,
     ExecutionContextModule,
+    CircularDependencyModule,
     // CacheManagerModule,
     // MyMongooseModule,
   ],
