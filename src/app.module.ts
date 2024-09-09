@@ -23,6 +23,7 @@ import {
 import { DecoratorModule } from './decorator/decorator.module';
 import { ExecutionContextModule } from './execution-context/execution-context.module';
 import { CircularDependencyModule } from './circular-dependency/circular-dependency.module';
+import { DynamicModuleModule } from './dynamic-module/dynamic-module.module';
 
 @Module({
   imports: [
@@ -38,6 +39,11 @@ import { CircularDependencyModule } from './circular-dependency/circular-depende
     DecoratorModule,
     ExecutionContextModule,
     CircularDependencyModule,
+    DynamicModuleModule.register({}),
+    // DynamicBuilderModule.register({
+    //   aaa: 0,
+    //   bbb: '',
+    // }),
     // CacheManagerModule,
     // MyMongooseModule,
   ],
