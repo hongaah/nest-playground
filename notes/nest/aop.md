@@ -15,10 +15,14 @@ AOP 的调用顺序： req - Middleware - Guard - Interceptor - Pipe - *handler*
 
 ## 中间件 Middleware
 
-中间件是 Express 的一种实现，可以拦截请求，做一些处理，然后继续往下执行。Nest 的底层是 Express，所以可以使用 Express 的中间件
+中间件是 Express 的一种实现，可以拦截请求，做一些逻辑通用的处理，然后继续往下执行。Nest 的底层是 Express，所以可以使用 Express 的中间件。
 
-- 全局中间件：src/main.ts - app.use()
+- 全局中间件：src/main.ts - app.use()。app.use 等同于在 AppModule 的 configure 方法里的 forRoutes('*')。
 - 路由中间件：src/app.module.ts - configure
+
+Nest 与 Express 的 middleware 的区别：
+- Express middleware 的 next 参数就是调用下一个 middleware。而 @Next 装饰器是调用下一个 handler。
+- 虽然都有 request、response、next 参数，但是 Nest 的可以从 Nest 的 IOC 容器注入依赖，还可以指定作用于哪些路由。
 
 ## 守卫 Guard
 
@@ -40,7 +44,9 @@ AOP 的调用顺序： req - Middleware - Guard - Interceptor - Pipe - *handler*
 - 全局启用 方法1：作用于全部 handler，手动 new 实例，src/main.ts - app.useGlobalInterceptors(new TimeInterceptor())
 - 全局启用 方法2：作用于全部 handler，在 IoC 容器里，src/app.module.ts - { provide: APP_INTERCEPTOR, useClass: TimeInterceptor }
 
-和 Middleware 的区别，主要在于参数的不同：interceptor 和 guard 可以拿到调用的 controller 和 handler
+和 Middleware 的区别，主要在于参数的不同：
+- interceptor 和 guard 可以拿到调用的 controller 和 handler，进而通过 reflector 拿到它的 metadata 等信息的，这些 middleware 就不可以。再就是 interceptor 里是可以用 rxjs 的操作符来组织响应处理流程的
+- interceptor 更适合处理与具体业务相关的逻辑，而 middleware 适合更通用的处理逻辑。
 
 ## 管道 Pipe
 

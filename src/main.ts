@@ -49,7 +49,7 @@ async function bootstrap() {
   // app.useGlobalInterceptors(new TimeInterceptor());
   // // 全局管道
   // app.useGlobalPipes(new ValidatePipe());
-  // 全局错误拦截器
+  // // 全局错误拦截器
   // app.useGlobalFilters(new TestFilter());
 
   /** session */
