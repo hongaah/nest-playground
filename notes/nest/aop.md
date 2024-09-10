@@ -56,9 +56,9 @@ Pipe 是管道的意思，用来对参数做一些检验和转换
 - 只对某个参数生效：xx/controller/xx - @Query('num', ValidatePipe)
 - 对整个 Controller 都生效：xx/controller - @UsePipes(ValidatePipe)
 - 全局生效 方法1：src/main.ts - app.useGlobalPipes(new ValidatePipe())
-- 全局生效 方法2：src/app.module.ts - { provide: APP_PIPE, useClass: ValidatePipe }
+- 全局生效 方法2，在 IoC 容器里：src/app.module.ts - { provide: APP_PIPE, useClass: ValidatePipe }
 
-Nest 内置管道
+### 内置管道
 
 - ValidationPipe
 - ParseIntPipe
@@ -69,6 +69,22 @@ Nest 内置管道
 - ParseEnumPipe
 - ParseFloatPipe
 - ParseFilePipe
+
+🌰: src\aop\pipe
+
+ValidationPipe 依赖两个包:
+- class-transformer 这个包可以把普通对象转换为对应的 class 实例
+- class-validator 可以用装饰器和非装饰器两种方式对 class 属性做验证。支持很多种验证规则，比如邮箱、域名、长度、值的范围等，而且错误消息也可以自定义。
+
+ParseUUIDPipe 校验是否是 UUID。UUID 是一种随机生成的几乎不可能重复的字符串，可以用来做 id。它有 v3、v4、v5 3 个版本，我们用 uuid 包可以生成这种 id。
+
+DefaultValuePipe 设置参数默认值，当没传参数的时候，会使用默认值。
+
+### 自定义 Pipe
+
+手写一个 pipe 就是实现 PipeTransform 接口的 transform 方法，它的返回值就是传给 handler 的值。在 pipe 里可以拿到装饰器和 handler 参数的各种信息，基于这些来实现校验和转换。
+
+🌰: src\aop\concept\validate.pipe.ts
 
 ## 异常处理 ExceptionFilter
 

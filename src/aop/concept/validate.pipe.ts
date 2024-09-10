@@ -7,7 +7,7 @@ import {
 
 @Injectable()
 export class ValidatePipe implements PipeTransform {
-  // 可以对参数做一些检验和转换
+  // pipe 可以对参数做一些检验和转换
   transform(value: any, metadata: ArgumentMetadata) {
     if (Number.isNaN(parseInt(value))) {
       throw new BadRequestException(`参数${metadata.data}只能是字符串或者数字`);

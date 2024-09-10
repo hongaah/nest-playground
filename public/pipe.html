@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qs@6.10.2/dist/qs.js"></script>
+</head>
+
+<body>
+  <!-- http://localhost:3000/static/pipe.html -->
+  <h3>pipe</h3>
+  <button onClick="pipeooo()">/pipe/ooo post</button>
+  <button onClick="pipeppp()">/pipe/ppp post</button>
+
+  <script>
+    async function pipeooo () {
+      // 客户端向本地服务发起一个请求，将参数传输到服务器
+      const res = await axios.post('/pipe/ooo', {
+        name: 'hong',
+        age: 18,
+        sex: 0,
+        hobbies: ['reading']
+      }, {
+        headers: { 'content-type': 'application/json' }
+      })
+
+      console.log(res);
+    }
+    async function pipeppp () {
+      const res = await axios.post('/pipe/ooo', {
+        client: 'client'
+      }, {
+        headers: { 'content-type': 'application/json' }
+      })
+
+      console.log(res);
+    }
+  </script>
+</body>
