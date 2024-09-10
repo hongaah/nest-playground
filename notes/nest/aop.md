@@ -45,7 +45,8 @@ Nest 与 Express 的 middleware 的区别：
 - 全局启用 方法2：作用于全部 handler，在 IoC 容器里，src/app.module.ts - { provide: APP_INTERCEPTOR, useClass: TimeInterceptor }
 
 和 Middleware 的区别，主要在于参数的不同：
-- interceptor 和 guard 可以拿到调用的 controller 和 handler，进而通过 reflector 拿到它的 metadata 等信息的，这些 middleware 就不可以。再就是 interceptor 里是可以用 rxjs 的操作符来组织响应处理流程的
+- interceptor 和 guard 可以拿到调用的 controller 和 handler，进而通过 reflector 拿到它的 metadata 等信息的。
+- interceptor 里可以用 rxjs 的操作符来组织响应处理流程的
 - interceptor 更适合处理与具体业务相关的逻辑，而 middleware 适合更通用的处理逻辑。
 
 ## 管道 Pipe
