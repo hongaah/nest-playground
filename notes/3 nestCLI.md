@@ -35,7 +35,7 @@ nest generate resource aaa // 完整生成一个模块，支持 http、websocket
 nest g resource aaa --no-spec // --no-spec 是不生成测试文件
 
 nest g guard login --no-spec --flat // 创建一个 guard
-nest g interceptor my-cache --no-spec --flat // 创建一个 interceptor --flat 是生成到当前目录，而不是生成到 src/interceptors 目录下
+nest g interceptor my-cache --no-spec --flat // 创建一个 interceptor --flat 是不生成 interceptors 目录
 nest g pipe validate --no-spec --flat // 创建一个 pipe
 nest g filter test --no-spec --flat // 创建一个 filter
 

@@ -11,11 +11,17 @@ import { Response } from 'express';
 @Catch(BadRequestException)
 export class TestFilter implements ExceptionFilter {
   catch(exception: BadRequestException, host: ArgumentsHost) {
-    const response: Response = host.switchToHttp().getResponse();
+    const response = host.switchToHttp().getResponse() as {
+      message: string[];
+    } & Response;
 
     response.status(400).json({
       statusCode: 400,
-      message: 'test: ' + exception.message,
+      message:
+        'test: ' +
+        (response?.message?.join
+          ? response?.message?.join(',')
+          : exception.message),
     });
   }
 }

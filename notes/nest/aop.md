@@ -92,6 +92,8 @@ DefaultValuePipe 设置参数默认值，当没传参数的时候，会使用默
 
 - 路由启用：只作用某个 handler，xx/controller/xx - @UseFilters(TestFilter)
 - 对整个 Controller 都生效：xx/controller - @UseFilters(TestFilter)
+- 全局生效 方法1：src/main.ts - app.useGlobalFilters(new TestFilter())
+- 全局生效 方法2，在 IoC 容器里：src/app.module.ts - { provide: APP_FILTER, useClass: TestFilter }
 
 Nest 内置了很多 http 相关的异常，都是 HttpException 的子类
 
