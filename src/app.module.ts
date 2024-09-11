@@ -24,6 +24,7 @@ import { DecoratorModule } from './decorator/decorator.module';
 import { ExecutionContextModule } from './execution-context/execution-context.module';
 import { CircularDependencyModule } from './circular-dependency/circular-dependency.module';
 import { DynamicModuleModule } from './dynamic-module/dynamic-module.module';
+import { MulterModule } from './multer/multer.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { DynamicModuleModule } from './dynamic-module/dynamic-module.module';
     ExecutionContextModule,
     CircularDependencyModule,
     DynamicModuleModule.register({}),
+    MulterModule,
     // DynamicBuilderModule.register({
     //   aaa: 0,
     //   bbb: '',

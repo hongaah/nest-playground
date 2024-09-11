@@ -80,6 +80,8 @@ ParseUUIDPipe 校验是否是 UUID。UUID 是一种随机生成的几乎不可�
 
 DefaultValuePipe 设置参数默认值，当没传参数的时候，会使用默认值。
 
+ParseFilePipe: 校验文件做。比如 MaxFileSizeValidator 校验文件大小、FileTypeValidator 校验文件类型
+
 ### 自定义 Pipe
 
 手写一个 pipe 就是实现 PipeTransform 接口的 transform 方法，它的返回值就是传给 handler 的值。在 pipe 里可以拿到装饰器和 handler 参数的各种信息，基于这些来实现校验和转换。
