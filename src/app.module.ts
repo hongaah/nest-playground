@@ -7,7 +7,7 @@ import { LifecycleModule } from './lifecycle/lifecycle.module';
 import { MyLoggerModule } from './my-logger/my-logger.module';
 import { TestGlobalModule } from './test-global/test-global.module';
 import { MyWinstonLoggerModule } from './my-winston-logger/my-winston-logger.module';
-// import { SwaggerModule } from './swagger/swagger.module';
+import { SwaggerModule } from './swagger/swagger.module';
 import { RedisModule } from './redis/redis.module';
 import { AopModule } from './aop/aop.module';
 // import { APP_GUARD, APP_INTERCEPTOR, APP_PIPE, APP_FILTER } from '@nestjs/core';
@@ -33,7 +33,7 @@ import { DynamicModuleModule } from './dynamic-module/dynamic-module.module';
     MyLoggerModule,
     TestGlobalModule,
     MyWinstonLoggerModule,
-    // SwaggerModule,
+    SwaggerModule,
     RedisModule,
     AopModule,
     DecoratorModule,

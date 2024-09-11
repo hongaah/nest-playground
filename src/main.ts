@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import { VersioningType } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 // import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
@@ -39,6 +40,11 @@ async function bootstrap() {
 
   /** swagger */
   startSwagger(app);
+
+  /** 支持多版本接口 */
+  app.enableVersioning({
+    type: VersioningType.URI,
+  });
 
   /** AOP */
   // // 全局中间件

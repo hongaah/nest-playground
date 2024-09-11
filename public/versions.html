@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qs@6.10.2/dist/qs.js"></script>
+</head>
+
+<body>
+  <!-- http://localhost:3000/static/versions.html -->
+  <h3>多版本接口</h3>
+  <button onClick="handleHeader1()">header1</button>
+  <button onClick="handleHeader2()">header2</button>
+  <button onClick="handleHeader3()">header3</button>
+  <button onClick="handleHeaderNeutral()">header Neutral</button>
+  <button onClick="pipeppp()">disable-custom</button>
+
+  <script>
+    async function handleHeader1 () {
+      // const url = '/versions'
+      const url = '/v1/versions'
+      const res = await axios.get(url, {
+        headers: {
+          // version: '1',
+          // accept: 'application/json;vv=1'
+        }
+      })
+
+      console.log(res);
+    }
+    async function handleHeader2 () {
+      // const url = '/versions'
+      const url = '/v2/versions'
+      const res = await axios.get(url, {
+        headers: {
+          // version: '2'
+          // accept: 'application/json;vv=2'
+        }
+      })
+
+      console.log(res);
+    }
+    async function handleHeader3 () {
+      // const url = '/versions'
+      const url = '/v3/versions'
+      const res = await axios.get(url, {
+        headers: {
+          // version: '3',
+          // accept: 'application/json;vv=3'
+        }
+      })
+
+      console.log(res);
+    }
+    async function handleHeaderNeutral () {
+      const res = await axios.get('/versions')
+
+      console.log(res);
+    }
+    async function pipeppp () {
+      const res = await axios.get('/versions', {
+        headers: { 'disable-custom': '1' }
+      })
+
+      console.log(res);
+    }
+  </script>
+</body>

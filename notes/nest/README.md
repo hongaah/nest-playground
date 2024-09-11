@@ -18,6 +18,14 @@ aop：Aspect Oriented Programming 面向切面编程，在多个请求响应流�
 
 nest cli：创建项目、创建模块、创建 controller、创建 service 等都可以用这个 cli 工具来做
 
+## 核心特点
+
+在 main.ts 里调用 NestFactory.create 方法，就会从 AppModule 开始递归解析 Module，实例化其中的 provider、controller，并依次调用它们的 onModuleInit 生命周期方法。之后会再递归调用每个 Module 的 provider、controller 的还有 Module 自身的 onApplicationBootstrap 生命周期方法。
+
+通过 IOC 实现了对象的自动创建、依赖的自动组装。
+通过 AOP 实现了通用逻辑的抽取和复用。
+IOC 内部的 Module 和 Provider 也都支持动态创建，灵活度很高。
+
 ## 对象
 
 Controller 对象：接收 http 请求，调用 Service，返回响应
