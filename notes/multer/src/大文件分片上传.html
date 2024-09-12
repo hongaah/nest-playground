@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大文件分片上传</title>
+  <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <input id="fileInput" type="file" />
+  <button onClick="mergeFile('')">大文件合并</button>
+
+  <script>
+    const fileInput = document.querySelector('#fileInput');
+    const chunkSize = 200 * 1024;
+
+    fileInput.onchange = async function () {
+      const file = fileInput.files[0];
+
+      // [...fileInput.files].forEach(item => {
+      //   data.append('files', item)
+      // })
+
+      // 前端实现大文件分片
+      const url = 'http://localhost:3000/large-file-sharding-upload/upload';
+      const chunks = [];
+      let startPos = 0;
+
+      while (startPos < file.size) {
+        // 对拿到的文件进行分片
+        chunks.push(file.slice(startPos, startPos + chunkSize));
+        startPos += chunkSize;
+      }
+
+      // 上传文件的时候给文件名加一个随机的字符串，防止名字冲突
+      const randomStr = Math.random().toString(36).slice(2);
+
+      const uploadTask = []
+      chunks.map((chunk, index) => {
+        const data = new FormData();
+        // 单独上传每个分片，分片名字为文件名 + index。
+        data.set('name', randomStr + '_' + file.name + '_' + index)
+        data.append('files', chunk);
+        // uploadTask.push(axios.post(url, data));
+
+        // 前端上传加进度条
+        uploadTask.push(axios.post(url, data, {
+          onUploadProgress: (progressEvent) => {
+            const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+            console.log('LOADING: ', percentCompleted)
+          }
+        }));
+      })
+      await Promise.all(uploadTask);
+
+      // 当分片全部上传完之后，调用 merge 接口
+      mergeFile(`${randomStr}_${file.name}`)
+    }
+
+    const mergeFile = (name) => {
+      if (!name) {
+        return alert('请确定文件名')
+      }
+      const url = 'http://localhost:3000/large-file-sharding-upload/merge';
+
+      axios.get(url, {
+        params: {
+          name: name
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

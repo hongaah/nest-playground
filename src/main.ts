@@ -16,8 +16,9 @@ async function bootstrap() {
   /** express */
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     ...loggerConfig,
-    cors: true, // 运行支持跨域
+    // cors: true, // 支持跨域 ①
   });
+  app.enableCors(); // 支持跨域 ②
 
   /** fastify */
   // const app = await NestFactory.create<NestFastifyApplication>(
