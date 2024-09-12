@@ -26,22 +26,26 @@ export class MulterController {
   constructor(private readonly multerService: MulterService) {}
 
   // 单文件上传
+  // 自定义 pipe 校验文件大小
   @Post('aaa')
   @UseInterceptors(
     FileInterceptor('aaa', {
       dest: 'uploads',
     }),
   )
-  uploadFile(@UploadedFile() file: Express.Multer.File, @Body() body) {
+  uploadFile(
+    @UploadedFile(FileSizeValidationPipe) file: Express.Multer.File,
+    @Body() body,
+  ) {
     console.log('body', body);
     console.log('file', file);
   }
 
   // 多文件上传
+  // 指定 storage
   @Post('bbb')
   @UseInterceptors(
     FilesInterceptor('bbb', 3, {
-      // 指定 storage
       storage: storage,
     }),
   )
@@ -54,6 +58,7 @@ export class MulterController {
   }
 
   // 多文件多字段上传
+  // 使用 nest 提供的 Interceptor 限制文件数量
   @Post('ccc')
   @UseInterceptors(
     FileFieldsInterceptor(
@@ -83,14 +88,15 @@ export class MulterController {
     }),
   )
   uploadAnyFiles(
-    @UploadedFiles(FileSizeValidationPipe) files: Array<Express.Multer.File>,
+    @UploadedFiles() files: Array<Express.Multer.File>,
     @Body() body,
   ) {
     console.log('body', body);
     console.log('files', files);
   }
 
-  // 文件校验
+  // 单文件上传
+  // 文件校验：使用 nest 提供的 pipe 限制文件格式和大小，自定义异常捕获
   @Post('fff')
   @UseInterceptors(
     FileInterceptor('aaa', {
@@ -117,6 +123,7 @@ export class MulterController {
     console.log('file', file);
   }
 
+  // 单文件上传
   // 自定义校验
   @Post('hhh')
   @UseInterceptors(

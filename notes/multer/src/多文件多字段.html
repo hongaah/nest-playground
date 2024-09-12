@@ -20,13 +20,13 @@
       data.set('age', 20);
       data.append('aaa', fileInput.files[0]);
       data.append('aaa', fileInput.files[1]);
-      data.append('bbb', fileInput.files[2]);
-      data.append('bbb', fileInput.files[3]);
+      data.append('aaa', fileInput.files[2]);
+      data.append('aaa', fileInput.files[3]);
 
       // const res = await axios.post('http://localhost:3333/ccc', data);
       // const res = await axios.post('http://localhost:3333/ddd', data);
-      // const res = await axios.post('http://localhost:3000/multer/ccc', data);
-      const res = await axios.post('http://localhost:3000/multer/ddd', data);
+      const res = await axios.post('http://localhost:3000/multer/ccc', data);
+      // const res = await axios.post('http://localhost:3000/multer/ddd', data);
       console.log(res);
     }
 
