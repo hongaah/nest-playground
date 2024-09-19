@@ -1,6 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm';
+import { IdCard } from './IdCard';
 
-// 默认的映射关系：主键为 INT 自增、firstName 和 lastName 是 VARCHAR(255)，age 是 INT。
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -14,4 +14,8 @@ export class User {
 
   @Column()
   age: number;
+
+  // 实现在 user 里也可以访问 idCard，第二个参数说明外键是 idCard Entity 的 user 属性。
+  @OneToOne(() => IdCard, (idCard) => idCard.user)
+  idCard: IdCard;
 }

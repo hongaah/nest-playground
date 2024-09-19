@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { User } from './entity/User';
-import { Aaa } from './entity/Aaa';
+import { IdCard } from './entity/IdCard';
 
 // DataSource 会根据你传入的连接配置、驱动包，来创建数据库连接
 export const AppDataSource = new DataSource({
@@ -11,13 +11,13 @@ export const AppDataSource = new DataSource({
   port: 3306,
   username: 'root',
   password: 'hazel',
-  database: 'practice',
+  database: 'typeorm_test',
   // synchronize 是根据同步建表，也就是当 database 里没有和 Entity 对应的表的时候，会自动生成建表 sql 语句并执行。
   synchronize: true,
   // 打印生成的 sql 语句。
   logging: true,
   // entities 是指定有哪些和数据库的表对应的 Entity。
-  entities: [User, Aaa],
+  entities: [User, IdCard],
   // migrations 是修改表结构之类的 sql
   migrations: [],
   // subscribers 是一些 Entity 生命周期的订阅者，比如 insert、update、remove 前后，可以加入一些逻辑
