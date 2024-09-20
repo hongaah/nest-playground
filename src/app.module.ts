@@ -1,4 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HttpModule } from './http/http.module';
@@ -25,9 +26,11 @@ import { ExecutionContextModule } from './execution-context/execution-context.mo
 import { CircularDependencyModule } from './circular-dependency/circular-dependency.module';
 import { DynamicModuleModule } from './dynamic-module/dynamic-module.module';
 import { MulterModule } from './multer/multer.module';
+import { TestTypeormModule, AppDataSource } from './test-typeorm';
 
 @Module({
   imports: [
+    TypeOrmModule.forRoot(AppDataSource),
     HttpModule,
     ProviderModule,
     LifecycleModule,
@@ -42,6 +45,7 @@ import { MulterModule } from './multer/multer.module';
     CircularDependencyModule,
     DynamicModuleModule.register({}),
     MulterModule,
+    TestTypeormModule,
     // DynamicBuilderModule.register({
     //   aaa: 0,
     //   bbb: '',
