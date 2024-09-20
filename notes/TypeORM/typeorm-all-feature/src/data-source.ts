@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import { Department } from './entity/Department';
-import { Employee } from './entity/Employee';
+import { Article } from './entity/Article';
+import { Tag } from './entity/Tag';
 
 // DataSource 会根据你传入的连接配置、驱动包，来创建数据库连接
 export const AppDataSource = new DataSource({
@@ -17,7 +17,7 @@ export const AppDataSource = new DataSource({
   // 打印生成的 sql 语句。
   logging: true,
   // entities 是指定有哪些和数据库的表对应的 Entity。
-  entities: [Department, Employee],
+  entities: [Article, Tag],
   // migrations 是修改表结构之类的 sql
   migrations: [],
   // subscribers 是一些 Entity 生命周期的订阅者，比如 insert、update、remove 前后，可以加入一些逻辑

@@ -11,7 +11,7 @@ export class Department {
   })
   name: string;
 
-  // 第二个参数指定外键列在 employee.department 维护
+  // 第二个参数说明外键在 employee.department 维护
   @OneToMany(() => Employee, (employee) => employee.department, {
     cascade: true,
   })

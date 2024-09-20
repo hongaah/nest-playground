@@ -39,6 +39,7 @@ Entity 里通过 @Entity 指定和数据库表的映射，通过 @PrimaryGenerat
   transaction：包裹一层事务的 sql
   getRepository：拿到对单个 Entity 操作的类，方法同 EntityManager
 
+此外，Entity 之间的引用关系，可以转换为数据库表之间的外键关联的关系。
 
 ## 一对一关系的映射和增删改查
 
@@ -67,3 +68,13 @@ TypeORM 会自动在多的那一方添加外键，不需要通过 @JoinColumn �
 删除的话，如果设置了外键的 CASCADE 或者 SET NULL，那只删除主表（一的那一方）对应的 Entity 就好了，msyql 会做后续的关联删除或者 id 置空。
 
 否则就要先删除所有的从表（多的那一方）对应的 Entity 再删除主表对应的 Entity。
+
+## 多对多关系的映射和增删改查
+
+🌰：notes\TypeORM\typeorm-all-feature\src\many2many.ts
+
+多对多关系在 Entity 里映射是通过 @ManyToMany 和 @JoinTable 来声明的。
+
+但如果双方都保留了对方的引用，需要第二个参数来指定关联的外键列在哪，也就是如何查找当前 entity。
+
+多对多关系的修改只要查出来之后修改下属性，然后 save，TypeORM 会自动去更新中间表。
