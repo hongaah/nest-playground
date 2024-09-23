@@ -31,6 +31,7 @@ import { TestTypeormModule, AppDataSource } from './test-typeorm';
 @Module({
   imports: [
     TypeOrmModule.forRoot(AppDataSource),
+    TestTypeormModule,
     HttpModule,
     ProviderModule,
     LifecycleModule,
@@ -45,7 +46,6 @@ import { TestTypeormModule, AppDataSource } from './test-typeorm';
     CircularDependencyModule,
     DynamicModuleModule.register({}),
     MulterModule,
-    TestTypeormModule,
     // DynamicBuilderModule.register({
     //   aaa: 0,
     //   bbb: '',
