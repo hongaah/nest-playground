@@ -26,11 +26,15 @@ import { ExecutionContextModule } from './execution-context/execution-context.mo
 import { CircularDependencyModule } from './circular-dependency/circular-dependency.module';
 import { DynamicModuleModule } from './dynamic-module/dynamic-module.module';
 import { MulterModule } from './multer/multer.module';
-import { TestTypeormModule, AppDataSource } from './test-typeorm';
+import {
+  TestTypeormModule,
+  AppDataSource,
+  AppDataSourceMigration,
+} from './test-typeorm';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(AppDataSource),
+    TypeOrmModule.forRoot(AppDataSourceMigration),
     TestTypeormModule,
     HttpModule,
     ProviderModule,

@@ -48,3 +48,7 @@ migration:run：执行 migration，会根据数据库 migrations 表的记录来
 migration:revert：撤销上次 migration，删掉数据库 migrations 里的上次执行记录
 
 在 mysql workbench 里导出下建表 sql 语句：Server - Data Export，但是导出建表 sql 再复制到 migration 的 up 方法里挺麻烦的。所以可以用 typeorm 提供的 cli，自动生成语句。
+
+## Nest 项目里使用 TypeORM 迁移
+
+🌰：src\test-typeorm\README.md

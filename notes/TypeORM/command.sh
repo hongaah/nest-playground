@@ -10,6 +10,7 @@ npx typeorm entity:create src/entity/IdCard
 npx ts-node ./node_modules/typeorm/cli migration:create ./src/migration/Aaa
 
 # 用 migration:generate 来生成写好的迁移文件，根据 data-source.ts 引用的实体。
+# migration:generate 只会根据表结构变动生成迁移 sql，而数据的插入的 sql 需要我们自己添加。
 npx ts-node ./node_modules/typeorm/cli migration:generate ./src/migration/Aaa -d ./src/data-source.ts
 
 # 用 migration:run 来手动建表
