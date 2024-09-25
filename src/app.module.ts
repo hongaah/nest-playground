@@ -32,6 +32,7 @@ import { MulterModule } from './multer/multer.module';
 //   AppDataSourceMigration,
 // } from './test-typeorm';
 import { TestEnvModule } from './test-env/test-env.module';
+import { JwtAndSessionModule } from './jwt-and-session/jwt-and-session.module';
 
 @Module({
   imports: [
@@ -58,6 +59,7 @@ import { TestEnvModule } from './test-env/test-env.module';
     // CacheManagerModule,
     // MyMongooseModule,
     TestEnvModule,
+    JwtAndSessionModule,
   ],
   controllers: [AppController],
   providers: [

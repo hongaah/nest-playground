@@ -10,6 +10,8 @@ import { loggerConfig } from 'src/my-logger/config/logger-config';
 import { startSwagger } from 'src/swagger/config/swagger-config';
 // import { startGlobalMiddleware, TimeInterceptor, LoginGuard, ValidatePipe, TestFilter } from 'src/aop/concept';
 import { sessionHandler } from 'src/decorator/config';
+import { useSession } from './jwt-and-session/index';
+
 async function bootstrap() {
   // nest 会从 AppModule 开始解析 class 上通过装饰器声明的依赖信息，自动创建和组装对象
 
@@ -47,6 +49,9 @@ async function bootstrap() {
   app.enableVersioning({
     type: VersioningType.URI,
   });
+
+  /** session */
+  app.use(useSession());
 
   /** AOP */
   // // 全局中间件

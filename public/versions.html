@@ -18,11 +18,10 @@
   <script>
     async function handleHeader1 () {
       // const url = '/versions'
-      const url = '/v1/versions'
+      const url = '/jwt-and-session/ttt'
       const res = await axios.get(url, {
         headers: {
-          // version: '1',
-          // accept: 'application/json;vv=1'
+          authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3VudCI6MSwiaWF0IjoxNzI3MjUzMDI2LCJleHAiOjE3Mjc4NTc4MjZ9.Qu6f5IexpKVBD1baraxuCJMbBx8m8eckGczdHimJV7Q'
         }
       })
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qs@6.10.2/dist/qs.js"></script>
+</head>
+
+<body>
+  <!-- http://localhost:3000/static/jwtandsession.html -->
+  <h3>jwt and session</h3>
+  <button onClick="handleJwt()">jwt</button>
+
+  <script>
+    async function handleJwt () {
+      const url = '/jwt-and-session/ttt'
+      const res = await axios.get(url, {
+        headers: {
+          authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3VudCI6MiwiaWF0IjoxNzI3MjU1NjEzLCJleHAiOjE3Mjc4NjA0MTN9.GJ7Ou_9elG__c9IoYAhM60iL6e6x7HgoUHdCIMT1WjQ'
+        }
+      })
+
+      console.log(res);
+    }
+  </script>
+</body>
