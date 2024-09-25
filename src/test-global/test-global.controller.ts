@@ -4,6 +4,7 @@ import { CustomLoggerProvider } from '../my-logger/CustomLoggerProvider';
 import { CustomLoggerDynamic } from '../my-logger/CustomLoggerDynamic';
 import { WINSTON_LOGGER_TOKEN } from 'src/my-winston-logger/my-winston-logger.module';
 import { LifecycleService } from 'src/lifecycle/lifecycle.service';
+import { ConfigService } from '@nestjs/config';
 
 @Controller('test-global')
 export class TestGlobalController {
@@ -14,6 +15,9 @@ export class TestGlobalController {
   @Inject(WINSTON_LOGGER_TOKEN) private winstonLogger;
 
   @Inject(LifecycleService) private lifecycleService: LifecycleService;
+
+  @Inject(ConfigService)
+  private configService: ConfigService;
 
   constructor(private readonly testGlobalService: TestGlobalService) {}
 
@@ -29,5 +33,14 @@ export class TestGlobalController {
   @Get('test-lifecycle')
   testLifecycle() {
     return this.lifecycleService.getHello();
+  }
+
+  @Get('test-env')
+  getEnv() {
+    return {
+      aaa: this.configService.get('aaa'),
+      bbb: this.configService.get('bbb'),
+      xxx: this.configService.get('xxx'),
+    };
   }
 }

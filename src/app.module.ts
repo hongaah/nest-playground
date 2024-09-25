@@ -1,5 +1,4 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HttpModule } from './http/http.module';
@@ -26,16 +25,18 @@ import { ExecutionContextModule } from './execution-context/execution-context.mo
 import { CircularDependencyModule } from './circular-dependency/circular-dependency.module';
 import { DynamicModuleModule } from './dynamic-module/dynamic-module.module';
 import { MulterModule } from './multer/multer.module';
-import {
-  TestTypeormModule,
-  AppDataSource,
-  AppDataSourceMigration,
-} from './test-typeorm';
+// import { TypeOrmModule } from '@nestjs/typeorm';
+// import {
+//   TestTypeormModule,
+//   AppDataSource,
+//   AppDataSourceMigration,
+// } from './test-typeorm';
+import { TestEnvModule } from './test-env/test-env.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(AppDataSourceMigration),
-    TestTypeormModule,
+    // TypeOrmModule.forRoot(AppDataSourceMigration),
+    // TestTypeormModule,
     HttpModule,
     ProviderModule,
     LifecycleModule,
@@ -56,6 +57,7 @@ import {
     // }),
     // CacheManagerModule,
     // MyMongooseModule,
+    TestEnvModule,
   ],
   controllers: [AppController],
   providers: [

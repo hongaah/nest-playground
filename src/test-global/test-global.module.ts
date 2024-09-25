@@ -1,4 +1,5 @@
 import { Global, forwardRef, Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TestGlobalService } from './test-global.service';
 import { TestGlobalController } from './test-global.controller';
 import { MyLoggerModule } from '../my-logger/my-logger.module';
@@ -39,6 +40,12 @@ import * as chalk from 'chalk';
           dirname: 'log',
         }),
       ],
+    }),
+
+    ConfigModule.forFeature(() => {
+      return {
+        xxx: 333,
+      };
     }),
   ],
   controllers: [TestGlobalController],
