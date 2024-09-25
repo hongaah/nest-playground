@@ -6,9 +6,11 @@ import {
   Res,
   Headers,
   UnauthorizedException,
+  UseGuards,
 } from '@nestjs/common';
 import { JwtAndSessionService } from './jwt-and-session.service';
 import { JwtService } from '@nestjs/jwt';
+import { LoginGuard } from './config/login.guard';
 // import { Response } from 'express'; // Module not found: Error: Can't resolve 'express'
 
 @Controller('jwt-and-session')
@@ -58,5 +60,12 @@ export class JwtAndSessionController {
       response.setHeader('token', newToken);
       return 1;
     }
+  }
+
+  // 校验有无登录
+  @Get('aaa')
+  @UseGuards(LoginGuard)
+  aaa() {
+    return 'aaa';
   }
 }

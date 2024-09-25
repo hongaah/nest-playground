@@ -25,7 +25,7 @@ import { ExecutionContextModule } from './execution-context/execution-context.mo
 import { CircularDependencyModule } from './circular-dependency/circular-dependency.module';
 import { DynamicModuleModule } from './dynamic-module/dynamic-module.module';
 import { MulterModule } from './multer/multer.module';
-// import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
 // import {
 //   TestTypeormModule,
 //   AppDataSource,
@@ -33,10 +33,11 @@ import { MulterModule } from './multer/multer.module';
 // } from './test-typeorm';
 import { TestEnvModule } from './test-env/test-env.module';
 import { JwtAndSessionModule } from './jwt-and-session/jwt-and-session.module';
+import { AppDataSource } from './jwt-and-session/index';
 
 @Module({
   imports: [
-    // TypeOrmModule.forRoot(AppDataSourceMigration),
+    TypeOrmModule.forRoot(AppDataSource),
     // TestTypeormModule,
     HttpModule,
     ProviderModule,

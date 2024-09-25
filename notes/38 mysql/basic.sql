@@ -27,6 +27,8 @@ use `new_schema_demo`;
 -- DDL（Data Definition Language）
 -- 数据库表的创建、删除和清空表
 CREATE SCHEMA `new_schema_demo` ;
+-- utf8 最多存 3 个字节的字符，而 utf8mb4 最多 4 个字符，可以存储一些 emoji 等特殊字符。
+CREATE SCHEMA login_test DEFAULT CHARACTER SET utf8mb4;
 
 -- 逻辑删除：status 用 0 表示未删除，1 表示已删除，这叫做逻辑删除。也就是删除的时候就是从 0 改成 1，但不会真正删除数据。
 CREATE TABLE `new_schema_demo`.`student` (

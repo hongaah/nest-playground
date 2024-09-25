@@ -2,8 +2,12 @@ import { JwtModule } from '@nestjs/jwt';
 
 // 在 AppModule 注册 JwtModule
 export const jwtConfig = {
+  // 声明为全局模块，这样就不用每个模块都引入了
+  global: true,
+
   // 加密 jwt 的密钥
-  secret: 'guang',
+  secret: 'hazel',
+
   signOptions: {
     // token 过期时间设置 7 天
     expiresIn: '7d',
