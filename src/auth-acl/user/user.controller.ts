@@ -10,8 +10,8 @@ import {
 import { UserService } from './user.service';
 import { LoginUserDto } from './dto/login-user.dto';
 
-@UsePipes(ValidationPipe)
 @Controller('auth-acl2/user')
+@UsePipes(ValidationPipe)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

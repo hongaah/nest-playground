@@ -29,8 +29,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 // import { TestTypeormModule } from './test-typeorm/test-typeorm.module';
 import { TestEnvModule } from './test-env/test-env.module';
 import { JwtAndSessionModule } from './jwt-and-session/jwt-and-session.module';
-import { AppDataSource } from 'src/auth-acl/config/data-source.acl';
+import { AppDataSource } from 'src/auth-rbac/config/data-source.rbac';
 import { AuthAclModule } from './auth-acl/auth-acl.module';
+import { AuthRbacModule } from './auth-rbac/auth-rbac.module';
 
 @Module({
   imports: [
@@ -59,6 +60,7 @@ import { AuthAclModule } from './auth-acl/auth-acl.module';
     TestEnvModule,
     JwtAndSessionModule,
     AuthAclModule,
+    AuthRbacModule,
   ],
   controllers: [AppController],
   providers: [
