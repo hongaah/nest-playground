@@ -26,14 +26,11 @@ import { CircularDependencyModule } from './circular-dependency/circular-depende
 import { DynamicModuleModule } from './dynamic-module/dynamic-module.module';
 import { MulterModule } from './multer/multer.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-// import {
-//   TestTypeormModule,
-//   AppDataSource,
-//   AppDataSourceMigration,
-// } from './test-typeorm';
+// import { TestTypeormModule } from './test-typeorm/test-typeorm.module';
 import { TestEnvModule } from './test-env/test-env.module';
 import { JwtAndSessionModule } from './jwt-and-session/jwt-and-session.module';
-import { AppDataSource } from './jwt-and-session/index';
+import { AppDataSource } from 'src/auth-acl/config/data-source.acl';
+import { AuthAclModule } from './auth-acl/auth-acl.module';
 
 @Module({
   imports: [
@@ -61,6 +58,7 @@ import { AppDataSource } from './jwt-and-session/index';
     // MyMongooseModule,
     TestEnvModule,
     JwtAndSessionModule,
+    AuthAclModule,
   ],
   controllers: [AppController],
   providers: [

@@ -51,6 +51,7 @@ async function bootstrap() {
   });
 
   /** session */
+  // app.use(sessionHandler());
   app.use(useSession());
 
   /** AOP */
@@ -64,9 +65,6 @@ async function bootstrap() {
   // app.useGlobalPipes(new ValidatePipe());
   // // 全局错误拦截器
   // app.useGlobalFilters(new TestFilter());
-
-  /** session */
-  app.use(sessionHandler());
 
   await app.listen(3000);
 }
