@@ -1,8 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectEntityManager } from '@nestjs/typeorm';
 import { EntityManager, In } from 'typeorm';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { UserLoginDto } from './dto/user-login.dto';
 import { Permission } from './entities/permission.entity';
 import { Role } from './entities/role.entity';
@@ -117,6 +115,14 @@ export class UserService {
       },
       relations: {
         permissions: true,
+      },
+    });
+  }
+
+  async findUserById(userId: number) {
+    return await this.entityManager.findOne(User, {
+      where: {
+        id: userId,
       },
     });
   }

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qs@6.10.2/dist/qs.js"></script>
+</head>
+
+<body>
+  <!-- http://localhost:3000/static/access_token&refresh_token.html -->
+  <div id="aaa"></div>
+  <div id="bbb"></div>
+
+  <script>
+    const urlPrefix = 'http://localhost:3000/auth-rbac2'
+    let refreshing = false;
+    const queue = [];
+
+    function setAaa (data) {
+      document.getElementById('aaa').innerHTML = data;
+    }
+    function setBbb (data) {
+      document.getElementById('bbb').innerHTML = data;
+    }
+    async function login () {
+      if (localStorage.getItem('access_token')) {
+        return
+      }
+
+      const res = await axios.post(urlPrefix + '/user/loginwithrefresh', {
+        username: '张三',
+        password: '111111'
+      });
+      res.data.access_token && localStorage.setItem('access_token', res.data.access_token);
+      res.data.refresh_token && localStorage.setItem('refresh_token', res.data.refresh_token);
+    }
+
+    async function query () {
+      await login();
+
+      const { data: aaaData } = await axios.get(urlPrefix + '/aaa');
+      const { data: bbbData } = await axios.get(urlPrefix + '/bbb');
+
+      setAaa(aaaData);
+      setBbb(bbbData);
+    }
+
+    async function refreshToken () {
+      const res = await axios.get(urlPrefix + '/user/refresh', {
+        params: {
+          refresh_token: localStorage.getItem('refresh_token')
+        }
+      });
+      localStorage.setItem('access_token', res.data.access_token || '');
+      localStorage.setItem('refresh_token', res.data.refresh_token || '');
+      return res;
+    }
+
+    axios.interceptors.request.use(function (config) {
+      const accessToken = localStorage.getItem('access_token');
+
+      if (accessToken) {
+        config.headers.authorization = 'Bearer ' + accessToken;
+      }
+      return config;
+    })
+
+    axios.interceptors.response.use(
+      (response) => {
+        return response;
+      },
+      async (error) => {
+        let { data, config } = error.response;
+
+        if (refreshing) {
+          return new Promise((resolve) => {
+            queue.push({
+              config,
+              resolve
+            });
+          });
+        }
+        if (data.statusCode === 401 && !config.url.includes('/user/refresh')) {
+          refreshing = true;
+
+          const res = await refreshToken();
+
+          refreshing = false;
+
+          if (res.status === 200) {
+            queue.forEach(({ config, resolve }) => {
+              // 继续执行之前失败的队列数据
+              resolve(axios(config))
+            })
+
+            return axios(config);
+          } else {
+            alert('登录过期，请重新登录');
+            return Promise.reject(res.data)
+          }
+
+        } else {
+          return error.response;
+        }
+      }
+    )
+
+    query();
+  </script>
+</body>

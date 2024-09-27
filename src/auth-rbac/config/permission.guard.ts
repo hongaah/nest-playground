@@ -40,10 +40,11 @@ export class PermissionGuard implements CanActivate {
     console.log(permissions);
 
     // 该接口需要的权限
-    const requiredPermissions = this.reflector.getAllAndOverride<string[]>(
-      'require-permission',
-      [context.getClass(), context.getHandler()],
-    );
+    const requiredPermissions =
+      this.reflector.getAllAndOverride<string[]>('require-permission', [
+        context.getClass(),
+        context.getHandler(),
+      ]) ?? [];
     console.log(requiredPermissions);
 
     // 判断用户有无该接口的权限
