@@ -12,6 +12,7 @@ import { AaaService } from './aaa.service';
 import { CreateAaaDto } from './dto/create-aaa.dto';
 import { UpdateAaaDto } from './dto/update-aaa.dto';
 import { LoginGuard } from '../config/login.guard';
+import { LoginGuard as LoginGuardSingleToken } from '../config/login.singleToken.guard';
 import { PermissionGuard } from '../config/permission.guard';
 import { RequireLogin } from '../config/custom-decorator';
 
@@ -29,6 +30,12 @@ export class AaaController {
   @Get()
   @UseGuards(LoginGuard, PermissionGuard)
   findAll() {
+    return this.aaaService.findAll();
+  }
+
+  @Get('singleToken')
+  @UseGuards(LoginGuardSingleToken, PermissionGuard)
+  singleToken() {
     return this.aaaService.findAll();
   }
 

@@ -20,7 +20,10 @@ async function bootstrap() {
     ...loggerConfig,
     // cors: true, // 支持跨域 ①
   });
-  app.enableCors(); // 支持跨域 ②
+  app.enableCors({
+    // 跨域的问题，默认能访问的 header 是有限的，需要特别处理
+    exposedHeaders: ['token'],
+  }); // 支持跨域 ②
 
   /** fastify */
   // const app = await NestFactory.create<NestFastifyApplication>(

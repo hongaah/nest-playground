@@ -43,7 +43,7 @@ export class UserController {
     };
   }
 
-  // 登录状态无感刷新 access_token 和 refresh_token
+  /** 登录状态无感刷新 access_token 和 refresh_token */
   @Post('loginwithrefresh')
   async loginWithRefresh(@Body() loginUser: UserLoginDto) {
     const user = await this.userService.login(loginUser);
@@ -108,5 +108,25 @@ export class UserController {
       // refresh_token 失效或者错误时，会返回 401 的响应码
       throw new UnauthorizedException('token 已失效，请重新登录');
     }
+  }
+
+  /**  登录状态无感刷新 单 token 无限续期 */
+  @Post('loginwithSingleToken')
+  async loginwithSingleToken(@Body() loginUser: UserLoginDto) {
+    const user = await this.userService.login(loginUser);
+
+    const access_token = this.jwtService.sign(
+      {
+        userId: user.id,
+        username: user.username,
+      },
+      {
+        expiresIn: '7d',
+      },
+    );
+
+    return {
+      access_token,
+    };
   }
 }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qs@6.10.2/dist/qs.js"></script>
+</head>
+
+<body>
+  <!-- http://localhost:3000/static/single_token.html -->
+  <div id="aaa"></div>
+  <div id="bbb"></div>
+
+  <script>
+    const urlPrefix = 'http://localhost:3000/auth-rbac2'
+    let refreshing = false;
+    const queue = [];
+
+    function setAaa (data) {
+      document.getElementById('aaa').innerHTML = data;
+    }
+    function setBbb (data) {
+      document.getElementById('bbb').innerHTML = data;
+    }
+    async function login () {
+      if (localStorage.getItem('access_token')) {
+        return
+      }
+
+      const res = await axios.post(urlPrefix + '/user/loginwithSingleToken', {
+        username: '张三',
+        password: '111111'
+      });
+      res.data.access_token && localStorage.setItem('access_token', res.data.access_token);
+    }
+
+    async function query () {
+      await login();
+
+      const { data: aaaData } = await axios.get(urlPrefix + '/aaa');
+      const { data: bbbData } = await axios.get(urlPrefix + '/bbb');
+
+      setAaa(aaaData);
+      setBbb(bbbData);
+    }
+
+    axios.interceptors.request.use(function (config) {
+      const accessToken = localStorage.getItem('access_token');
+
+      if (accessToken) {
+        config.headers.authorization = 'Bearer ' + accessToken;
+      }
+      return config;
+    })
+
+    axios.interceptors.response.use(
+      (response) => {
+        const newToken = response.headers['token'];
+        // 跨域的问题，默认能访问的 header 是有限的
+        // 如果想在代码访问别的 header，需要在后端支持下，在 Access-Controll-Expose-Headers 里加上这个 header
+        console.log('newToken: ', newToken);
+
+        if (newToken) {
+          localStorage.setItem('access_token ', newToken);
+        }
+
+        return response;
+      },
+      async (error) => {
+        let { data, config } = error.response;
+
+        if (data.statusCode === 401) {
+          alert('登录过期，请重新登录');
+
+          return Promise.reject(error)
+        } else {
+          return Promise.reject(error)
+        }
+      }
+    )
+
+    query();
+  </script>
+</body>
