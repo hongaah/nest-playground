@@ -32,6 +32,7 @@ import { JwtAndSessionModule } from './jwt-and-session/jwt-and-session.module';
 import { AppDataSource } from 'src/auth-rbac/config/data-source.rbac';
 import { AuthAclModule } from './auth-acl/auth-acl.module';
 import { AuthRbacModule } from './auth-rbac/auth-rbac.module';
+import { MyPassportModule } from './my-passport/my-passport.module';
 
 @Module({
   imports: [
@@ -61,6 +62,7 @@ import { AuthRbacModule } from './auth-rbac/auth-rbac.module';
     JwtAndSessionModule,
     AuthAclModule,
     AuthRbacModule,
+    MyPassportModule,
   ],
   controllers: [AppController],
   providers: [
