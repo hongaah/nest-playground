@@ -29,11 +29,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 // import { TestTypeormModule } from './test-typeorm/test-typeorm.module';
 import { TestEnvModule } from './test-env/test-env.module';
 import { JwtAndSessionModule } from './jwt-and-session/jwt-and-session.module';
-import { AppDataSource } from 'src/auth-rbac/config/data-source.rbac';
+import { AppDataSource } from 'src/my-passport-google/config/data-source.google';
 import { AuthAclModule } from './auth-acl/auth-acl.module';
 import { AuthRbacModule } from './auth-rbac/auth-rbac.module';
 import { MyPassportModule } from './my-passport/my-passport.module';
 import { MyPassportGithubModule } from './my-passport-github/my-passport-github.module';
+import { MyPassportGoogleModule } from './my-passport-google/my-passport-google.module';
 
 @Module({
   imports: [
@@ -65,6 +66,7 @@ import { MyPassportGithubModule } from './my-passport-github/my-passport-github.
     AuthRbacModule,
     MyPassportModule,
     MyPassportGithubModule,
+    MyPassportGoogleModule,
   ],
   controllers: [AppController],
   providers: [

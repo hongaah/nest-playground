@@ -4,6 +4,8 @@
 
 我们的服务就只要在用户表存一个 githubId 的字段，用 github 登录之后根据 id 查询用户信息，实现登录就好了。这样就免去了每次登录都输入用户名密码的麻烦。
 
+🌰：src\my-passport-github
+
 clientID、clientSecret 配置步骤：
 
 ```
