@@ -5,3 +5,8 @@
 passport 把不同的认证逻辑封装成了不同 Strategy，每个 Stategy 都有 validate 方法来验证。每个 Strategy 都是从 request 取出一些东西，交给 validate 方法验证，validate 方法返回 user 信息，自动放到 request.user 上。
 
 并且 @nestjs/passport 提供了 Guard 可以直接用，如果想扩展，继承 AuthGuard('xxx') 然后重写下 canActivate 方法就好了。
+
+passport 提供了很多[策略](https://www.passportjs.org/packages/)：
+passport-local（用户名密码认证）
+passport-jwt（jwt 认证）
+passport-github2 （基于 github 的三方登录）

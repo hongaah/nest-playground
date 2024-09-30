@@ -33,6 +33,7 @@ import { AppDataSource } from 'src/auth-rbac/config/data-source.rbac';
 import { AuthAclModule } from './auth-acl/auth-acl.module';
 import { AuthRbacModule } from './auth-rbac/auth-rbac.module';
 import { MyPassportModule } from './my-passport/my-passport.module';
+import { MyPassportGithubModule } from './my-passport-github/my-passport-github.module';
 
 @Module({
   imports: [
@@ -63,6 +64,7 @@ import { MyPassportModule } from './my-passport/my-passport.module';
     AuthAclModule,
     AuthRbacModule,
     MyPassportModule,
+    MyPassportGithubModule,
   ],
   controllers: [AppController],
   providers: [

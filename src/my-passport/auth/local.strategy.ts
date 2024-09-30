@@ -12,6 +12,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   }
 
   // 自定义校验规则
+  // passport 的策略会在验证过后把 validate 的返回值放在 request.user 上
   async validate(username: string, password: string) {
     const user = await this.authService.validateUser(username, password);
     if (!user) {
