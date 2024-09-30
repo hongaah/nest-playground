@@ -9,8 +9,9 @@ import { WINSTON_LOGGER_TOKEN } from 'src/my-winston-logger/my-winston-logger.mo
 import { loggerConfig } from 'src/my-logger/config/logger-config';
 import { startSwagger } from 'src/swagger/config/swagger-config';
 // import { startGlobalMiddleware, TimeInterceptor, LoginGuard, ValidatePipe, TestFilter } from 'src/aop/concept';
-import { sessionHandler } from 'src/decorator/config';
+// import { sessionHandler } from 'src/decorator/config';
 import { useSession } from './jwt-and-session/index';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   // nest 会从 AppModule 开始解析 class 上通过装饰器声明的依赖信息，自动创建和组装对象
@@ -24,6 +25,9 @@ async function bootstrap() {
     // 跨域的问题，默认能访问的 header 是有限的，需要特别处理
     exposedHeaders: ['token'],
   }); // 支持跨域 ②
+
+  /** cookie */
+  app.use(cookieParser());
 
   /** fastify */
   // const app = await NestFactory.create<NestFastifyApplication>(

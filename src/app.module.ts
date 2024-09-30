@@ -35,6 +35,7 @@ import { AuthRbacModule } from './auth-rbac/auth-rbac.module';
 import { MyPassportModule } from './my-passport/my-passport.module';
 import { MyPassportGithubModule } from './my-passport-github/my-passport-github.module';
 import { MyPassportGoogleModule } from './my-passport-google/my-passport-google.module';
+import { RedisSessionModule } from './redis-session/redis-session.module';
 
 @Module({
   imports: [
@@ -67,6 +68,7 @@ import { MyPassportGoogleModule } from './my-passport-google/my-passport-google.
     MyPassportModule,
     MyPassportGithubModule,
     MyPassportGoogleModule,
+    RedisSessionModule,
   ],
   controllers: [AppController],
   providers: [

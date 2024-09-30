@@ -2,6 +2,7 @@ import { Module, Global } from '@nestjs/common';
 import { RedisService } from './redis.service';
 import { RedisController } from './redis.controller';
 import { RedisService as RedisAuthAclService } from 'src/auth-acl/redis/redis.service';
+import { RedisService as RedisSessionService } from 'src/redis-session/redis/redis.service';
 import { createClient } from 'redis';
 
 export const REDIS_CLIENT = 'REDIS_CLIENT';
@@ -13,6 +14,7 @@ export const REDIS_CLIENT = 'REDIS_CLIENT';
   providers: [
     RedisService,
     RedisAuthAclService,
+    RedisSessionService,
     {
       // 通过 useFactory 的方式动态创建 provider，token 为 REDIS_CLIENT。
       provide: REDIS_CLIENT,
@@ -29,6 +31,6 @@ export const REDIS_CLIENT = 'REDIS_CLIENT';
       },
     },
   ],
-  exports: [REDIS_CLIENT, RedisAuthAclService],
+  exports: [REDIS_CLIENT, RedisAuthAclService, RedisSessionService],
 })
 export class RedisModule {}
