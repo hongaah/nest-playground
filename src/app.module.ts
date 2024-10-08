@@ -36,6 +36,7 @@ import { MyPassportModule } from './my-passport/my-passport.module';
 import { MyPassportGithubModule } from './my-passport-github/my-passport-github.module';
 import { MyPassportGoogleModule } from './my-passport-google/my-passport-google.module';
 import { RedisSessionModule } from './redis-session/redis-session.module';
+import { TestDtoVoModule } from './test-dto-vo/test-dto-vo.module';
 
 @Module({
   imports: [
@@ -69,6 +70,7 @@ import { RedisSessionModule } from './redis-session/redis-session.module';
     MyPassportGithubModule,
     MyPassportGoogleModule,
     RedisSessionModule,
+    TestDtoVoModule,
   ],
   controllers: [AppController],
   providers: [

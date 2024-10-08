@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { VersioningType } from '@nestjs/common';
+import { VersioningType, ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 // import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
@@ -60,6 +60,13 @@ async function bootstrap() {
   /** session */
   // app.use(sessionHandler());
   app.use(useSession());
+
+  /** 全局启用 ValidationPipe */
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true, // 自动把参数的 js 对象转换为 dto 类型对象
+    }),
+  );
 
   /** AOP */
   // // 全局中间件

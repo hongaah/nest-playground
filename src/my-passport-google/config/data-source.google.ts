@@ -1,4 +1,4 @@
-import { User } from '../entities/user.entity';
+// import { User } from '../entities/user.entity';
 
 export const AppDataSource = {
   type: 'mysql',
@@ -8,8 +8,8 @@ export const AppDataSource = {
   password: 'hazel',
   database: 'google-login',
   synchronize: true,
-  logging: true,
-  entities: [User],
+  logging: false,
+  // entities: [User],
   poolSize: 10,
   connectorPackage: 'mysql2',
   extra: {
