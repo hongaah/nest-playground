@@ -7,7 +7,7 @@ import {
   MinLength,
 } from 'class-validator';
 
-export class CreateAaaDto {
+export class CreateMyDtoDto {
   @IsNotEmpty()
   @MinLength(4)
   @MaxLength(20)

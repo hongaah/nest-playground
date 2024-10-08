@@ -1,4 +1,4 @@
-export class Aaa {
+export class MyDto {
   id: number;
 
   name: string;
