@@ -14,6 +14,8 @@ import { UserVo } from './vo/user.vo';
 import { User } from './entities/user.entity';
 import { MyVoService } from './my-vo.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { MySerializeOptions } from '../config/my-serialize-options.decorator';
+import { MyClassSerializerInterceptor } from '../config/my-class-serializer.interceptor';
 
 @ApiTags('Vo Demo')
 @Controller('test-dto-vo-2/my-vo')
@@ -31,7 +33,7 @@ export class MyVoController {
     return this.myVoService.findAll();
   }
 
-  @Get('/init:id')
+  @Get('/init/:id')
   findOne(@Param('id') id: string) {
     return this.myVoService.findOne(+id);
   }
@@ -55,7 +57,7 @@ export class MyVoController {
   }
 
   @UseInterceptors(ClassSerializerInterceptor)
-  @Get('/extendEntity:id')
+  @Get('/extendEntity/:id')
   findOneExtendEntity(@Param('id') id: string) {
     return this.myVoService.findOne(+id);
   }
@@ -73,8 +75,19 @@ export class MyVoController {
     return this.myVoService.findAllByVo();
   }
 
-  @Get('/byvo:id')
+  @Get('/byvo/:id')
   findOneByVo(@Param('id') id: string) {
     return this.myVoService.findOneByVo(+id);
+  }
+
+  /** 手写 ClassSerializerInterceptor 和 SerializeOptions */
+  @MySerializeOptions({
+    strategy: 'excludeAll', // 全部排除，除了有 @Expose 装饰器的
+    // strategy: 'exposeAll', // 全部导出，除了有 @Exclude 装饰器的
+  })
+  @UseInterceptors(MyClassSerializerInterceptor)
+  @Get('/extendEntityDIY')
+  findAllDIY() {
+    return this.myVoService.findAll();
   }
 }

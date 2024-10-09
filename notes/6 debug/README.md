@@ -88,5 +88,5 @@ nest start --debug // 原理就是 node --inspect，断点需要手动加 debugg
 }
 ```
 
-2. 点击调试模式启动
+2. 打断点，点击调试模式启动
 3. 接口调用

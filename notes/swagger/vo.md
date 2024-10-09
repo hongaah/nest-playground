@@ -10,6 +10,7 @@
 - 路由启用：只在某个 handler 生效
 
 ClassSerializerInterceptor 的底层是基于 class-transfomer 包来实现的，拿到响应对象，plainToClass 拿到 class，然后根据 class 的装饰器再 classToPlain 创建序列化的对象。
+[手写一个 ClassSerializerInterceptor](./ClassSerializerInterceptor.md)
 
 ## entity 定义
 

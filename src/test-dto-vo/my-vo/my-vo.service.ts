@@ -3,8 +3,21 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
 import { UserVo } from './vo/user.vo';
 
-const database = [];
-let id = 0;
+const database = [
+  {
+    username: 'aaa',
+    password: 'aaa111',
+    email: 'aaa@qq.com',
+    id: 0,
+  },
+  {
+    username: 'bbb',
+    password: 'bbb222',
+    email: 'bbb@qq.com',
+    id: 1,
+  },
+];
+let id = 2;
 
 @Injectable()
 export class MyVoService {

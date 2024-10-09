@@ -6,7 +6,7 @@
   "configurations": [
     {
       "name": "Launch Program",
-      "program": "${workspaceFolder}/notes/3 debug/index.js",
+      "program": "${workspaceFolder}/notes/6 debug/index.js",
       "request": "launch",
       "stopOnEntry": true, // 首行断住
       "skipFiles": [
