@@ -7,7 +7,7 @@
 发邮件用 SMTP 协议
 收邮件用 POP3 协议、或者 IMAP 协议
 
-并且在 node 里也有对应的包，发邮件用 nodemailer 包，可以发送任何 html+css 的内容。收邮件用 imap 包，实现了邮件的搜索，然后用 mailparser来做了内容解析，下载邮件内容和附件。
+并且在 node 里也有对应的包，发邮件用 [nodemailer](https://link.juejin.cn/?target=https%3A%2F%2Fnodemailer.com%2Fmessage%2Fattachments%2F) 包，可以发送任何 html+css 的内容。收邮件用 imap 包，实现了邮件的搜索，然后用 mailparser来做了内容解析，下载邮件内容和附件。
 
 开启 smtp、imap 等服务：<https://wx.mail.qq.com/account/index?sid=zRFJTowCaVQuQVdiAJlHdgAA#/?tab=device>
 POP3/IMAP/SMTP/Exchange/CardDAV 授权码：sfyvqqdmedvpeagc

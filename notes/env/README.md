@@ -48,3 +48,26 @@ Nest 提供了 @nestjs/config 包来封装，使用 ConfigModule.forRoot 可以�
 pnpm add @nestjs/config
 pnpm add js-yaml
 ```
+
+### nest env 编译配置
+
+```json :nest-cli.json
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "generateOptions": {
+    "spec": false,
+    "flat": false
+  },
+  "compilerOptions": {
+    "webpack": true,
+    "deleteOutDir": true,
+    // .env 需要配置下 assets 才会在编译包时复制到 dist。
+    // 注意，assets 只支持 src 下的文件复制。如果是放在根目录，那就要自己复制了。
+    "assets": ["*.env"],
+    // 默认是 false，开启后，会在每次编译时，都会复制 assets 到 dist。
+    "watchAssets": true,
+  }
+}
+```

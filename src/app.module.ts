@@ -29,7 +29,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 // import { TestTypeormModule } from './test-typeorm/test-typeorm.module';
 import { TestEnvModule } from './test-env/test-env.module';
 import { JwtAndSessionModule } from './jwt-and-session/jwt-and-session.module';
-import { AppDataSource } from 'src/my-passport-google/config/data-source.google';
+import { AppDataSource } from 'src/email-login/config/data-source.email';
 import { AuthAclModule } from './auth-acl/auth-acl.module';
 import { AuthRbacModule } from './auth-rbac/auth-rbac.module';
 import { MyPassportModule } from './my-passport/my-passport.module';
@@ -37,6 +37,7 @@ import { MyPassportGithubModule } from './my-passport-github/my-passport-github.
 import { MyPassportGoogleModule } from './my-passport-google/my-passport-google.module';
 import { RedisSessionModule } from './redis-session/redis-session.module';
 import { TestDtoVoModule } from './test-dto-vo/test-dto-vo.module';
+import { EmailLoginModule } from './email-login/email-login.module';
 
 @Module({
   imports: [
@@ -71,6 +72,7 @@ import { TestDtoVoModule } from './test-dto-vo/test-dto-vo.module';
     MyPassportGoogleModule,
     RedisSessionModule,
     TestDtoVoModule,
+    EmailLoginModule,
   ],
   controllers: [AppController],
   providers: [

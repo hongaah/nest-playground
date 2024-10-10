@@ -3,6 +3,7 @@ import { RedisService } from './redis.service';
 import { RedisController } from './redis.controller';
 import { RedisService as RedisAuthAclService } from 'src/auth-acl/redis/redis.service';
 import { RedisService as RedisSessionService } from 'src/redis-session/redis/redis.service';
+import { RedisService as RedisEmailService } from 'src/email-login/redis/redis.service';
 import { createClient } from 'redis';
 
 export const REDIS_CLIENT = 'REDIS_CLIENT';
@@ -15,6 +16,7 @@ export const REDIS_CLIENT = 'REDIS_CLIENT';
     RedisService,
     RedisAuthAclService,
     RedisSessionService,
+    RedisEmailService,
     {
       // 通过 useFactory 的方式动态创建 provider，token 为 REDIS_CLIENT。
       provide: REDIS_CLIENT,
@@ -31,6 +33,11 @@ export const REDIS_CLIENT = 'REDIS_CLIENT';
       },
     },
   ],
-  exports: [REDIS_CLIENT, RedisAuthAclService, RedisSessionService],
+  exports: [
+    REDIS_CLIENT,
+    RedisAuthAclService,
+    RedisSessionService,
+    RedisEmailService,
+  ],
 })
 export class RedisModule {}

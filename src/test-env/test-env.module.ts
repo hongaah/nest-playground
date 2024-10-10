@@ -18,6 +18,7 @@ import * as path from 'path';
         // 默认读取根目录的 .env，配置的会优先，顺序在前面的也会覆盖后面的配置
         path.join(process.cwd(), '/src/test-env/.aaa.env'),
         path.join(process.cwd(), '/src/test-env/.env'),
+        path.join(process.cwd(), '/src/test-env/.mail.env'),
       ],
 
       // 动态配置 前面的配置会覆盖后面的配置
