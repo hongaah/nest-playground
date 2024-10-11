@@ -29,7 +29,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 // import { TestTypeormModule } from './test-typeorm/test-typeorm.module';
 import { TestEnvModule } from './test-env/test-env.module';
 import { JwtAndSessionModule } from './jwt-and-session/jwt-and-session.module';
-import { AppDataSource } from 'src/email-login/config/data-source.email';
+import { AppDataSource } from 'src/task-article-views/config/data-source.views';
 import { AuthAclModule } from './auth-acl/auth-acl.module';
 import { AuthRbacModule } from './auth-rbac/auth-rbac.module';
 import { MyPassportModule } from './my-passport/my-passport.module';
@@ -38,9 +38,13 @@ import { MyPassportGoogleModule } from './my-passport-google/my-passport-google.
 import { RedisSessionModule } from './redis-session/redis-session.module';
 import { TestDtoVoModule } from './test-dto-vo/test-dto-vo.module';
 import { EmailLoginModule } from './email-login/email-login.module';
+import { TaskArticleViewsModule } from './task-article-views/task-article-views.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { TaskModule } from './task/task.module';
 
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
     TypeOrmModule.forRoot(AppDataSource),
     // TestTypeormModule,
     HttpModule,
@@ -73,6 +77,8 @@ import { EmailLoginModule } from './email-login/email-login.module';
     RedisSessionModule,
     TestDtoVoModule,
     EmailLoginModule,
+    TaskArticleViewsModule,
+    TaskModule,
   ],
   controllers: [AppController],
   providers: [
