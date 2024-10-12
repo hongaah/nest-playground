@@ -10,7 +10,7 @@ export const AppDataSource = {
   password: 'hazel',
   database: 'article_views',
   synchronize: true,
-  logging: true,
+  logging: false,
   entities: [User, Article],
   poolSize: 10,
   connectorPackage: 'mysql2',

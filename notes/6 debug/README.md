@@ -67,6 +67,9 @@ nest start --debug // 原理就是 node --inspect，断点需要手动加 debugg
 - 空心 (白色填充) 圆圈，尝试设置断点时，断点被禁用或出现警告。
 提示：未绑定断点，无法设置某些断点。如果遇到问题，可以对启动配置进行故障排除。
 
+空心问题排查：
+1. 源码需要支持 sourcemap，检查编译文件的配置，比如 nest-cli.json 的 webpack: false
+
 ## VSCode Debugger nest 简易版
 
 1. 创建 npm scripts 的调试配置

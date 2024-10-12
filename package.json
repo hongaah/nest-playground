@@ -43,6 +43,7 @@
     "cache-manager-redis-store": "^3.0.1",
     "chalk": "4",
     "cookie-parser": "^1.4.6",
+    "cron": "^3.1.7",
     "dayjs": "^1.11.11",
     "express-session": "^1.18.0",
     "fastify": "^4.28.1",
