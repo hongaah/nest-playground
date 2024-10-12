@@ -1,7 +1,7 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { HttpModule } from './http/http.module';
+import { HttpModule as MyHttpModule } from './http/http.module';
 import { ProviderModule } from './provider/provider.module';
 import { LifecycleModule } from './lifecycle/lifecycle.module';
 import { MyLoggerModule } from './my-logger/my-logger.module';
@@ -43,6 +43,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { TaskModule } from './task/task.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { TestEventEmitterModule } from './test-event-emitter/test-event-emitter.module';
+import { CityWeatherModule } from './city-weather/city-weather.module';
 
 @Module({
   imports: [
@@ -50,7 +51,7 @@ import { TestEventEmitterModule } from './test-event-emitter/test-event-emitter.
     ScheduleModule.forRoot(),
     TypeOrmModule.forRoot(AppDataSource),
     // TestTypeormModule,
-    HttpModule,
+    MyHttpModule,
     ProviderModule,
     LifecycleModule,
     MyLoggerModule,
@@ -83,6 +84,7 @@ import { TestEventEmitterModule } from './test-event-emitter/test-event-emitter.
     TaskArticleViewsModule,
     TaskModule,
     TestEventEmitterModule,
+    CityWeatherModule,
   ],
   controllers: [AppController],
   providers: [

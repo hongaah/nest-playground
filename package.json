@@ -25,6 +25,7 @@
     "migration:revert": "npm run typeorm -- migration:revert -d ./src/test-typeorm/config/data-source-migration.ts"
   },
   "dependencies": {
+    "@nestjs/axios": "^3.0.3",
     "@nestjs/cache-manager": "^2.2.2",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.2.3",
@@ -40,6 +41,7 @@
     "@nestjs/swagger": "^7.4.0",
     "@nestjs/typeorm": "^10.0.2",
     "@types/express-session": "^1.18.0",
+    "axios": "^1.7.7",
     "cache-manager": "^5.7.6",
     "cache-manager-redis-store": "^3.0.1",
     "chalk": "4",
@@ -59,6 +61,7 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
+    "pinyin": "4.0.0-alpha.2",
     "redis": "^4.7.0",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
@@ -79,6 +82,7 @@
     "@types/passport-google-oauth20": "^2.0.16",
     "@types/passport-jwt": "^4.0.1",
     "@types/passport-local": "^1.0.38",
+    "@types/pinyin": "^2.10.2",
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
