@@ -41,9 +41,12 @@ import { EmailLoginModule } from './email-login/email-login.module';
 import { TaskArticleViewsModule } from './task-article-views/task-article-views.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TaskModule } from './task/task.module';
+import { EventEmitterModule } from '@nestjs/event-emitter';
+import { TestEventEmitterModule } from './test-event-emitter/test-event-emitter.module';
 
 @Module({
   imports: [
+    EventEmitterModule.forRoot(),
     ScheduleModule.forRoot(),
     TypeOrmModule.forRoot(AppDataSource),
     // TestTypeormModule,
@@ -79,6 +82,7 @@ import { TaskModule } from './task/task.module';
     EmailLoginModule,
     TaskArticleViewsModule,
     TaskModule,
+    TestEventEmitterModule,
   ],
   controllers: [AppController],
   providers: [
