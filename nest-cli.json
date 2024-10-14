@@ -7,9 +7,7 @@
     "flat": false
   },
   "compilerOptions": {
-    "webpack": false,
-    "deleteOutDir": true,
-    "watchAssets": true,
-    "assets": ["*.env"]
+    "webpack": true,
+    "deleteOutDir": true
   }
 }

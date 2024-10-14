@@ -49,3 +49,24 @@ nest start --debug // 启动调试的 websocket 服务，用来 debug
 
 nest info // 查看项目信息的，包括系统信息、node、npm 和依赖版本
 ```
+
+## nestCLI.json
+
+```json :nestCLI.json
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "generateOptions": {
+    "spec": false,
+    "flat": false
+  },
+  "compilerOptions": {
+    "webpack": false, // 使用 tsc 编译 sourcemap
+    "deleteOutDir": true, // 删除 dist 目录
+    "watchAssets": true, // 监听静态文件
+    "assets": ["*.env"] // 监听静态文件的路径
+  }
+}
+
+```
