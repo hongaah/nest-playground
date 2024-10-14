@@ -29,7 +29,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 // import { TestTypeormModule } from './test-typeorm/test-typeorm.module';
 import { TestEnvModule } from './test-env/test-env.module';
 import { JwtAndSessionModule } from './jwt-and-session/jwt-and-session.module';
-import { AppDataSource } from 'src/task-article-views/config/data-source.views';
+import { AppDataSource } from 'src/short-url/config/data-source.url';
 import { AuthAclModule } from './auth-acl/auth-acl.module';
 import { AuthRbacModule } from './auth-rbac/auth-rbac.module';
 import { MyPassportModule } from './my-passport/my-passport.module';
@@ -44,6 +44,7 @@ import { TaskModule } from './task/task.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { TestEventEmitterModule } from './test-event-emitter/test-event-emitter.module';
 import { CityWeatherModule } from './city-weather/city-weather.module';
+import { ShortUrlModule } from './short-url/short-url.module';
 
 @Module({
   imports: [
@@ -85,6 +86,7 @@ import { CityWeatherModule } from './city-weather/city-weather.module';
     TaskModule,
     TestEventEmitterModule,
     CityWeatherModule,
+    ShortUrlModule,
   ],
   controllers: [AppController],
   providers: [

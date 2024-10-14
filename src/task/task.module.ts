@@ -18,31 +18,31 @@ export class TaskModule implements OnApplicationBootstrap {
     /** 删除所有类型的任务 */
     console.log('--- 删除所有定时任务 ---');
 
-    const crons = this.schedulerRegistry.getCronJobs();
-    crons.forEach((item, key) => {
-      // 停掉 CronJob
-      item.stop();
-      this.schedulerRegistry.deleteCronJob(key);
-    });
+    // const crons = this.schedulerRegistry.getCronJobs();
+    // crons.forEach((item, key) => {
+    //   // 停掉 CronJob
+    //   item.stop();
+    //   this.schedulerRegistry.deleteCronJob(key);
+    // });
 
-    const intervals = this.schedulerRegistry.getIntervals();
-    intervals.forEach((item) => {
-      const interval = this.schedulerRegistry.getInterval(item);
+    // const intervals = this.schedulerRegistry.getIntervals();
+    // intervals.forEach((item) => {
+    //   const interval = this.schedulerRegistry.getInterval(item);
 
-      // timeout 和 interval 基于 setTimeout、setInterval 的原生 api 封装出来的，所以直接用 clearInterval 和 clearTimeout 来删除
-      clearInterval(interval);
+    //   // timeout 和 interval 基于 setTimeout、setInterval 的原生 api 封装出来的，所以直接用 clearInterval 和 clearTimeout 来删除
+    //   clearInterval(interval);
 
-      this.schedulerRegistry.deleteInterval(item);
-    });
+    //   this.schedulerRegistry.deleteInterval(item);
+    // });
 
-    const timeouts = this.schedulerRegistry.getTimeouts();
-    timeouts.forEach((item) => {
-      const timeout = this.schedulerRegistry.getTimeout(item);
-      // 删除定时器
-      clearTimeout(timeout);
+    // const timeouts = this.schedulerRegistry.getTimeouts();
+    // timeouts.forEach((item) => {
+    //   const timeout = this.schedulerRegistry.getTimeout(item);
+    //   // 删除定时器
+    //   clearTimeout(timeout);
 
-      this.schedulerRegistry.deleteTimeout(item);
-    });
+    //   this.schedulerRegistry.deleteTimeout(item);
+    // });
 
     // console.log(this.schedulerRegistry.getCronJobs());
     // console.log(this.schedulerRegistry.getIntervals());

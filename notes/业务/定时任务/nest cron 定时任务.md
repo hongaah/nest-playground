@@ -96,6 +96,18 @@ this.schedulerRegistry.addCronJob('job1', job)
 
 ## nest 示例
 
+全局注册定时任务后，即可在 service 里使用定时任务。
+
+```ts :src\app.module.ts
+import { ScheduleModule } from '@nestjs/schedule';
+
+@Module({
+  imports: [
+    ScheduleModule.forRoot(),
+  ]
+})
+```
+
 ```ts :🌰:src\task\task.service.ts
 import { Injectable, Inject } from '@nestjs/common';
 import { Cron, CronExpression, Interval, Timeout } from '@nestjs/schedule';
