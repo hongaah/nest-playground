@@ -32,7 +32,7 @@ export class UniqueCodeService {
   }
 
   // 一般是在凌晨 4 点左右批量插入一堆，比如一次性插入 10000 个
-  @Cron(CronExpression.EVERY_DAY_AT_4AM)
+  // @Cron(CronExpression.EVERY_DAY_AT_4AM)
   async batchGenerateCode() {
     for (let i = 0; i < 10000; i++) {
       this.generateCode();
