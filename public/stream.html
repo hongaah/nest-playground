@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qs@6.10.2/dist/qs.js"></script>
+</head>
+
+<body>
+  <!-- http://localhost:3000/static/stream.html -->
+  <h3>sse</h3>
+  <div id="aaa"></div>
+  <h3>sse log</h3>
+  <div id="bbb"></div>
+  <h3>sse file</h3>
+  <div id="ccc"></div>
+
+  <script>
+    async function getStream1 () {
+      // EventSource 是浏览器原生 api，接收 sse 信息
+      const eventSource = new EventSource('http://localhost:3000/api/http/stream/sse1');
+      eventSource.onmessage = ({ data }) => {
+        console.log('New message', JSON.parse(data));
+        document.getElementById('aaa').innerHTML = document.getElementById('aaa').innerHTML + data;
+      };
+    }
+
+    async function getStream2 () {
+      // EventSource 是浏览器原生 api，接收 sse 信息
+      const eventSource = new EventSource('http://localhost:3000/api/http/stream/sse2');
+      eventSource.onmessage = ({ data }) => {
+        console.log('New message', JSON.parse(data));
+        document.getElementById('bbb').innerHTML = document.getElementById('bbb').innerHTML + data;
+      };
+    }
+
+    async function getStream3 () {
+      // EventSource 是浏览器原生 api，接收 sse 信息
+      const eventSource = new EventSource('http://localhost:3000/api/http/stream/sse3');
+      eventSource.onmessage = ({ data }) => {
+        console.log('New message', JSON.parse(data));
+        document.getElementById('ccc').innerHTML = document.getElementById('ccc').innerHTML + data;
+      };
+    }
+
+    getStream1();
+    getStream2();
+    getStream3();
+  </script>
+</body>

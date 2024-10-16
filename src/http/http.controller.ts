@@ -12,10 +12,12 @@ import {
   Head,
   UseInterceptors,
   UploadedFiles,
+  Sse,
 } from '@nestjs/common';
 import { AnyFilesInterceptor } from '@nestjs/platform-express';
 import { HttpService } from './http.service';
 import { CreatePersonDto } from './dto/create-person.dto';
+import { Observable } from 'rxjs';
 
 /**
  * http 数据传输的方式主要有 5 种
@@ -23,6 +25,24 @@ import { CreatePersonDto } from './dto/create-person.dto';
 @Controller('/api/http')
 export class HttpController {
   constructor(private readonly httpService: HttpService) {}
+
+  // http://localhost:3000/static/stream.html
+  // http://localhost:3000/api/http/sse
+  // 服务端推送数据流
+  @Sse('sse')
+  sse() {
+    return new Observable((observer) => {
+      observer.next({ data: { msg: 'aaa' } });
+
+      setTimeout(() => {
+        observer.next({ data: { msg: 'bbb' } });
+      }, 2000);
+
+      setTimeout(() => {
+        observer.next({ data: { msg: 'ccc' } });
+      }, 5000);
+    });
+  }
 
   /**
    * url query
