@@ -37,10 +37,10 @@ docker build . -t aaa:ddd -f 2.Dockerfile // 用 -f 指定下 dockefile 的文�
 docker run 这个镜像就可以生成容器，指定映射的端口、挂载的数据卷、环境变量等
 
 通过 xxx-image 镜像跑起来一个叫做 xxx-container 的容器:
-docker run -d -p 8080:8080 -v /data/logs:/logs:ro --name xxx-container xxx-image
+docker run -d -p 8080:8081 -v /data/logs:/logs:ro --name xxx-container xxx-image
 
 -d 运行容器，后台运行，没有指定时会直接在控制台打印日志
--p 指定端口映射，映射宿主机的 8080 到容器的 8080 端口，那容器内 8080 端口的服务，就可以在宿主机的 8080 端口访问了
+-p 指定端口映射，映射宿主机的 8080 到容器的 8081 端口，那容器内 8081 端口的服务，就可以在宿主机的 8080 端口访问了
 
 -v 指定数据卷挂载
   挂载宿主机的 /data/logs 到容器的 /logs 目录，那容器内读写 /logs 目录的时候，改的就是宿主机的 /data/logs 目录，反过来，改宿主机 /data/logs 目录，容器内的 /logs 也会改，这俩同一个。
