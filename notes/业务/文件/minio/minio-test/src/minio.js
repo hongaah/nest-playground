@@ -4,7 +4,7 @@ var minioClient = new Minio.Client({
   endPoint: 'localhost',
   port: 9000,
   useSSL: false,
-  // 从minio 管理页面获取
+  // 通过 docker 起一个 minio 服务后，在 minio 可视化网页创建 accessKey
   accessKey: '',
   secretKey: '',
 });

@@ -45,6 +45,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
 import { TestEventEmitterModule } from './test-event-emitter/test-event-emitter.module';
 import { CityWeatherModule } from './city-weather/city-weather.module';
 import { ShortUrlModule } from './short-url/short-url.module';
+import { MinioModule } from './minio/minio.module';
 
 @Module({
   imports: [
@@ -87,6 +88,7 @@ import { ShortUrlModule } from './short-url/short-url.module';
     TestEventEmitterModule,
     CityWeatherModule,
     ShortUrlModule,
+    MinioModule,
   ],
   controllers: [AppController],
   providers: [

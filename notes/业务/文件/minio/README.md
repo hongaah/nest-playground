@@ -22,3 +22,16 @@ buckets - anonymous - add access role -> anonymous access: {prefix: /, access: r
 ### sdk
 
 [minio](https://min.io/docs/minio/linux/developers/javascript/minio-javascript.html)
+
+🌰: notes\业务\文件\minio\minio-test\src\minio.js
+
+node minio.js
+
+## minio 上传
+
+### 客户端直传 & 生成临时的签名
+
+有种方式是前端把文件上传到后端，后端再上传到 oss 服务，但这样没必要，传两次文件，浪费流量。一般都是前端直传 OSS 服务，然后把文件 url 给应用服务器。只要在服务端做预签名，前端就可以不用 accessKey 实现文件上传，确保了 accessKey 的安全。
+
+1. 服务端生成临时的签名。🌰: src\minio
+2. 前端通过签名上传文件到 minio 服务器。🌰：public\minio.html
