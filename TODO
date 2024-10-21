@@ -6,3 +6,4 @@
 为什么要使用 Docker Compose ？
 Docker 容器通信的最简单方式：桥接网络
 Redis + 高德地图，实现附近的充电宝
+抓包验证下：流式下载 localhost:3000/large-file-download/download3
