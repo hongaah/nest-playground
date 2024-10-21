@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://unpkg.com/qs@6.10.2/dist/qs.js"></script>
+</head>
+
+<body>
+  <!-- http://localhost:3000/static/compress_gif.html -->
+  <input type="file" id="selector" multiple>
+  <button onclick="upload()">compress</button>
+  <div id="status">No uploads</div>
+
+  <script type="text/javascript">
+    function upload () {
+      var files = document.querySelector("#selector").files;
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        uploadFile(file, (file, url) => {
+          compressFile(file, url);
+        });
+      }
+    }
+
+    function uploadFile (file, cb) {
+      const params = new FormData()
+      params.append('file', file);
+
+      fetch('/sharp-compress-gif/upload', {
+        method: 'POST',
+        body: params
+      }).then((response) => {
+        response.text().then((data) => {
+          console.log('upload data', data)
+          cb(file, data);
+        });
+      }).catch((e) => {
+        console.error(e);
+      });
+    }
+
+    function compressFile (file, url) {
+      if (document.querySelector('#status').innerText === 'No uploads') {
+        document.querySelector('#status').innerHTML = 'compressing';
+      }
+      const params = {
+        path: url,
+        color: 128,
+        level: 1
+      }
+
+      fetch(`/sharp-compress-gif/compression?${Qs.stringify(params)}`, {
+        method: 'GET',
+        responseType: "arraybuffer",
+      }).then((response) => {
+        response.blob().then((data) => {
+          compress(response, file.name)
+        });
+
+        document.querySelector('#status').innerHTML = `<br>compressed ${file.name}`;
+      }).catch((e) => {
+        console.error(e);
+      });
+    }
+
+    const compress = async (data, fileName = 'compress.jpg') => {
+      const blob = new Blob([data], { type: 'image/jpeg' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName;
+      link.click();
+      document.querySelector('#status').innerHTML += `<br>compress success ${file.name}`;
+    };
+  </script>
+</body>
+
+</html>
