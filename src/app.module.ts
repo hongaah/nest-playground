@@ -47,6 +47,7 @@ import { CityWeatherModule } from './city-weather/city-weather.module';
 import { ShortUrlModule } from './short-url/short-url.module';
 // import { MinioModule } from './minio/minio.module';
 import { PuppeteerBossjdModule } from './puppeteer-bossjd/puppeteer-bossjd.module';
+import { QrcodeLoginModule } from './qrcode-login/qrcode-login.module';
 
 @Module({
   imports: [
@@ -90,6 +91,7 @@ import { PuppeteerBossjdModule } from './puppeteer-bossjd/puppeteer-bossjd.modul
     CityWeatherModule,
     ShortUrlModule,
     PuppeteerBossjdModule,
+    QrcodeLoginModule,
     // MinioModule,
   ],
   controllers: [AppController],

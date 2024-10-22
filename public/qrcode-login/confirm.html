@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>扫码登录确认</title>
+  <script src="https://unpkg.com/axios@1.5.0/dist/axios.min.js"></script>
+  <style>
+    #info {
+      height: 400px;
+      line-height: 400px;
+      font-size: 20px;
+      padding: 20px;
+    }
+
+    #confirm,
+    #cancel {
+      display: block;
+      width: 80%;
+      line-height: 40px;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    #confirm {
+      background: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- http://localhost:3000/static/qrcode-login/confirm.html?id=ea794d90-a8f9-49ab-9df1-b76472a87eb9 -->
+  <button id="hazel">登录 hazel 账号</button>
+  <button id="hong">登录 hong 账号</button>
+
+  <div id="info">
+    是否确认登录 xxx 网站？
+  </div>
+  <button id="confirm">确认登录</button>
+  <button id="cancel">取消</button>
+
+  <script>
+    const params = new URLSearchParams(window.location.search.slice(1));
+
+    const id = params.get('id');
+
+    let token = '';
+    document.getElementById('hong').addEventListener('click', () => {
+      axios.get('/qrcode-login/login', {
+        params: {
+          username: 'hong',
+          password: '222222'
+        }
+      }).then(res => {
+        token = res.data.token;
+      });
+    });
+
+    document.getElementById('hazel').addEventListener('click', () => {
+      axios.get('/qrcode-login/login', {
+        params: {
+          username: 'hazel',
+          password: '111111'
+        }
+      }).then(res => {
+        token = res.data.token;
+      });
+    });
+
+    axios.get('/qrcode-login/qrcode/scan?id=' + id).catch(e => {
+      alert('二维码已过期');
+    });
+
+    document.getElementById('confirm').addEventListener('click', () => {
+      axios.get('/qrcode-login/qrcode/confirm?id=' + id, {
+        headers: {
+          authorization: 'Bearer ' + token
+        }
+      }).catch(e => {
+        alert('二维码已过期');
+      });
+    });
+
+    document.getElementById('cancel').addEventListener('click', () => {
+      axios.get('/qrcode-login/qrcode/cancel?id=' + id).catch(e => {
+        alert('二维码已过期');
+      });
+    });
+  </script>
+</body>
+
+</html>
