@@ -61,6 +61,7 @@ SELECT name as 名字, age as 年龄 FROM new_schema_demo.student where age >= 1
 SELECT name as 名字, age as 年龄 FROM new_schema_demo.student where age >= 19 and sex = '0';
 -- 可以用 LIKE 做模糊查询
 select * from new_schema_demo.student where name like '陈%';
+select * from new_schema_demo.student where name not like '陈%';
 -- 通过 in 来指定一个集合
 select * from new_schema_demo.student where age in (17, 18, 19);
 -- 也可以 not in
@@ -77,6 +78,9 @@ SELECT * FROM new_schema_demo.student limit 10, 10;
 SELECT * FROM new_schema_demo.student order by age desc;
 -- order by 指定根据 create_time 升序排列，如果 create_time 相同再根据 age 降序排列。
 SELECT name, age, create_time FROM new_schema_demo.student order by create_time asc, age desc;
+-- REGEXP 正则匹配模糊查询
+-- [^....]匹配不包含在[ ]的字符
+SELECT * FROM new_schema_demo.student where name REGEXP '^[a-zA-Z]';
 
 -- 分组统计
 -- 聚合函数：用于对数据的统计，比如 AVG、COUNT、SUM、MIN、MAX
