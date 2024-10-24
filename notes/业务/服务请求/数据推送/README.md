@@ -12,7 +12,9 @@ Server Sent Event（SSE）服务端单向推数据流，是HTTP 请求的一种�
 兼容性：很好，除了 ie 外都可以放心的用
 应用：站内信、CICD 构建日志实时打印、Chat GPT 信息返回等
 
-## 日志的实时推送
+## 应用
+
+### 日志的实时推送
 
 在 log 文件中不断写入， 执行以下命令后会在控制台实时输出：
 
@@ -22,3 +24,7 @@ powershell Get-Content -Path ./log -Wait -Tail 10 # windows
 node autolog.js
 node ./logbuffer.js
 ```
+
+### 爬虫大数据打印
+
+🌰：src\ppt-generate
