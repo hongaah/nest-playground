@@ -49,6 +49,7 @@ import { ShortUrlModule } from './short-url/short-url.module';
 import { PuppeteerBossjdModule } from './puppeteer-bossjd/puppeteer-bossjd.module';
 import { QrcodeLoginModule } from './qrcode-login/qrcode-login.module';
 import { PptGenerateModule } from './ppt-generate/ppt-generate.module';
+import { ServerStatusModule } from './server-status/server-status.module';
 
 @Module({
   imports: [
@@ -94,6 +95,7 @@ import { PptGenerateModule } from './ppt-generate/ppt-generate.module';
     PuppeteerBossjdModule,
     QrcodeLoginModule,
     PptGenerateModule,
+    ServerStatusModule,
     // MinioModule,
   ],
   controllers: [AppController],
