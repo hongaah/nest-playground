@@ -50,12 +50,16 @@ import { PuppeteerBossjdModule } from './puppeteer-bossjd/puppeteer-bossjd.modul
 import { QrcodeLoginModule } from './qrcode-login/qrcode-login.module';
 import { PptGenerateModule } from './ppt-generate/ppt-generate.module';
 import { ServerStatusModule } from './server-status/server-status.module';
+import { TestI18nModule } from './test-i18n/test-i18n.module';
+import { I18nModule } from 'nestjs-i18n';
+import { i18nConfig } from 'src/test-i18n/i18nConfig';
 
 @Module({
   imports: [
     EventEmitterModule.forRoot(),
     ScheduleModule.forRoot(),
     TypeOrmModule.forRoot(AppDataSource),
+    I18nModule.forRoot(i18nConfig),
     // TestTypeormModule,
     MyHttpModule,
     ProviderModule,
@@ -96,6 +100,7 @@ import { ServerStatusModule } from './server-status/server-status.module';
     QrcodeLoginModule,
     PptGenerateModule,
     ServerStatusModule,
+    TestI18nModule,
     // MinioModule,
   ],
   controllers: [AppController],
