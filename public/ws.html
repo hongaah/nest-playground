@@ -1,0 +1,60 @@
+<html>
+<!-- http://localhost:3000/static/ws.html -->
+
+<head>
+  <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"
+    integrity="sha384-KAZ4DtjNhLChOB/hxXuKqhMLYvx3b5MlT55xPEiNmREKRzeEm+RVPlTnAn0ajQNs"
+    crossorigin="anonymous"></script>
+
+  <script>
+    const socket = io('http://localhost:3000/');
+    socket.on('connect', function () {
+      console.log('Connected');
+
+      socket.emit('findAllWs', response =>
+        console.log('findAllWs', response),
+      );
+
+      socket.emit('observeData', response =>
+        console.log('observeData', response),
+      );
+
+      socket.emit('connectCurrentSocket', response =>
+        console.log('connectCurrentSocket', response),
+      );
+
+      socket.emit('findOneW', 1, response =>
+        console.log('findOneW', response),
+      );
+
+      socket.emit('createW', { name: '111111' }, response =>
+        console.log('createW', response),
+      );
+
+      socket.emit('updateW', { id: 2, name: '222222' }, response =>
+        console.log('updateAaa', response),
+      );
+
+      socket.emit('removeW', 2, response =>
+        console.log('removeW', response),
+      );
+    });
+
+    socket.on('hazel', function (data) {
+      console.log('hazel', data);
+    });
+
+    socket.on('observeData', response =>
+      console.log('observeData', response),
+    );
+
+    socket.on('disconnect', function () {
+      console.log('Disconnected');
+    });
+
+  </script>
+</head>
+
+<body></body>
+
+</html>
