@@ -77,8 +77,7 @@ export class WsGateway
 
   // 注入实例 2
   // 使用 @WebSocketServer 注入实例
-  @WebSocketServer()
-  server: Server;
+  @WebSocketServer() server: Server;
 
   @SubscribeMessage('connectCurrentSocket2')
   connectCurrentSocket2(@MessageBody() createWDto: CreateWDto) {
