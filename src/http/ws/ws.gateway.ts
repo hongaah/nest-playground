@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 import { Server } from 'socket.io';
 
 // @WebSocketGateway()声明这是一个处理 weboscket 的类，默认的端口和 http 服务 app.listen 的那个端口一样
-@WebSocketGateway()
+@WebSocketGateway(3001)
 export class WsGateway
   implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
 {

@@ -53,6 +53,7 @@ import { ServerStatusModule } from './server-status/server-status.module';
 import { TestI18nModule } from './test-i18n/test-i18n.module';
 import { I18nModule } from 'nestjs-i18n';
 import { i18nConfig } from 'src/test-i18n/i18nConfig';
+import { SocketChatroomModule } from './socket-chatroom/socket-chatroom.module';
 
 @Module({
   imports: [
@@ -101,6 +102,7 @@ import { i18nConfig } from 'src/test-i18n/i18nConfig';
     PptGenerateModule,
     ServerStatusModule,
     TestI18nModule,
+    SocketChatroomModule,
     // MinioModule,
   ],
   controllers: [AppController],
