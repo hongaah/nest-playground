@@ -3,6 +3,8 @@
 [basic](./typeorm-all-feature/README.md)
 [docs](https://www.typeorm.org/)
 
+TypeORM 是一个传统的 ORM 框架，ORM 即 Object Relational Mapping，也就是对象和关系型数据库的映射的含义，也就是把表映射到 entity 类，把表的关联映射成 entity 类的属性关联。完成 entity 和表的映射之后，你只要调用 userRepository 和 postRepository 的 find、delete、save 等 api，typeorm 会自动生成对应的 sql 语句并执行。
+
 ## nest & TypeORM
 
 🌰：src\test-typeorm
