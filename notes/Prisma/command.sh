@@ -6,4 +6,8 @@ npx prisma init --datasource-provider mysql
 npx prisma migrate dev --name aaa
 
 # 使用 @prisma/client 来做 CRUD
-npx ts-node ./src/index.ts
+npx ts-node ./src/demo/index.ts
+
+# Prisma 的全部命令
+npx prisma -h
+
