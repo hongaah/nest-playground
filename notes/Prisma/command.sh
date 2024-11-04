@@ -11,3 +11,5 @@ npx ts-node ./src/demo/index.ts
 # Prisma 的全部命令
 npx prisma -h
 
+# 生成 prisma client
+prisma generate --schema prisma/schema.prisma

@@ -1,0 +1,121 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  // 修改 client 生成代码的输出目录
+  output   = "../generated/client"
+}
+
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
+  output   = "../generated/docs"
+}
+
+generator json {
+  provider = "node node_modules/prisma-json-schema-generator"
+  output   = "../generated/json"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Test {
+  id Int @id @default(autoincrement())
+  // String 默认是 VARCHAR(191)
+  aaa String @db.Text
+  // @db.xxx 可以指定具体的 mysql 的数据类型，有括号的是可以填入参数的，比如 VARCHAR 可以指定长度
+  bbb Int @db.TinyInt @map("bbb2")
+  // @unique 是创建唯一索引
+  ccc String @db.VarChar(50) @unique
+
+  // @map 是给字段指定另一个名字，@@map 是给表指定另一个名字。
+  @@map("test_test")
+  // @@index 则是创建一个索引，索引就像书的目录一样，可以加快 sql 查询速度，sql 优化的时候我们经常会把高频查询的字段创建索引
+  @@index([bbb, ccc])
+}
+
+// enum 的语法，就是可以指定某个字段只能取一些枚举值
+enum EEE {
+  BBB
+  CCC
+  DDD
+}
+
+model Aaa {
+  id      Int      @id @default(autoincrement())
+  name    String?
+  role    EEE     @default(CCC)
+}
+
+// 一对多，在多的一侧加一个 unique 约束
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  posts Post[]
+}
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean @default(false)
+  // @relation 是指定多对一的关联关系，通过 authorId 关联 User 的 id
+  author    User    @relation(fields: [authorId], references: [id]) 
+  authorId  Int
+}
+
+// 一对多，员工和部门是多对一关系，在员工那一侧添加一个 departmentId 的列，然后通过 @relation 声明 deaprtmentId 的列引用 department 的 id 列。
+model Department {
+  id        Int    @id @default(autoincrement())
+  name      String  @db.VarChar(20)
+  // 创建时间我们使用 @default(now()) 的方式指定，这样插入数据的时候会自动填入当前时间
+  createTime DateTime @default(now())
+  // 更新时间使用 @updatedAt，会自动设置当前时间
+  updateTime DateTime @updatedAt
+  // 员工和部门是多对一关系，在员工那一侧添加一个 departmentId 的列，然后通过 @relation 声明 deaprtmentId 的列引用 department 的 id 列。
+  employees     Employee[]
+}
+
+model Employee {
+  id         Int       @id @default(autoincrement())
+  name      String     @db.VarChar(20)
+  phone     String     @db.VarChar(30)
+
+  deaprtmentId Int
+  department     Department      @relation(fields: [deaprtmentId], references: [id])
+}
+
+// 多对多
+model Poster {
+  id        Int          @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean      @default(false)
+  tags      TagOnPosters[]
+}
+
+model Tag {
+  id    Int          @id @default(autoincrement())
+  name  String
+  posts TagOnPosters[]
+}
+
+model TagOnPosters {
+  post   Poster @relation(fields: [postId], references: [id])
+  postId Int
+
+  tag    Tag @relation(fields: [tagId], references: [id])
+  tagId  Int
+
+  // 多对多需要创建一个中间表，中间表里有两个外键分别关联这两个表
+  // @@id 创建一个联合主键
+  @@id([postId, tagId])
+}
+
