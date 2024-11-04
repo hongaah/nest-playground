@@ -30,6 +30,9 @@ prisma 语句自动生成：
 client 代码在 node_modules/.prisma/client，然后就可以用 @prisma/client 来做 CRUD 了。
 
 🌰：notes\Prisma\prisma-test
+📄：notes\Prisma\prisma-test\prisma\schema.simple.prisma 改名：schema.prisma
+🥔 seed.ts: notes\Prisma\prisma-test\prisma\seed.simple.ts 改名：seed.ts
+
 业务场景1：
 创建 2 个 user，然后查询出来：
 npx ts-node ./src/demo/index.ts

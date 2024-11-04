@@ -8,19 +8,25 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator docs {
-  provider = "node node_modules/prisma-docs-generator"
-  output   = "../generated/docs"
-}
-
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model Aaa {
+model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
-  age Int @default(0)
+  posts Post[]
 }
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean @default(false)
+  // @relation 是指定多对一的关联关系，通过 authorId 关联 User 的 id
+  author    User    @relation(fields: [authorId], references: [id]) 
+  authorId  Int
+}
+
