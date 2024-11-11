@@ -54,6 +54,7 @@ import { TestI18nModule } from './test-i18n/test-i18n.module';
 import { I18nModule } from 'nestjs-i18n';
 import { i18nConfig } from 'src/test-i18n/i18nConfig';
 import { SocketChatroomModule } from './socket-chatroom/socket-chatroom.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
@@ -103,6 +104,7 @@ import { SocketChatroomModule } from './socket-chatroom/socket-chatroom.module';
     ServerStatusModule,
     TestI18nModule,
     SocketChatroomModule,
+    PrismaModule,
     // MinioModule,
   ],
   controllers: [AppController],
