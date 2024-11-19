@@ -29,7 +29,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 // import { TestTypeormModule } from './test-typeorm/test-typeorm.module';
 import { TestEnvModule } from './test-env/test-env.module';
 import { JwtAndSessionModule } from './jwt-and-session/jwt-and-session.module';
-import { AppDataSource } from 'src/puppeteer-bossjd/config/data-source.boss';
+import { AppDataSource } from 'src/redis-following/config/data-source.following';
 import { AuthAclModule } from './auth-acl/auth-acl.module';
 import { AuthRbacModule } from './auth-rbac/auth-rbac.module';
 import { MyPassportModule } from './my-passport/my-passport.module';
@@ -55,6 +55,7 @@ import { I18nModule } from 'nestjs-i18n';
 import { i18nConfig } from 'src/test-i18n/i18nConfig';
 import { SocketChatroomModule } from './socket-chatroom/socket-chatroom.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { RedisFollowingModule } from './redis-following/redis-following.module';
 
 @Module({
   imports: [
@@ -105,6 +106,7 @@ import { PrismaModule } from './prisma/prisma.module';
     TestI18nModule,
     SocketChatroomModule,
     PrismaModule,
+    RedisFollowingModule,
     // MinioModule,
   ],
   controllers: [AppController],
