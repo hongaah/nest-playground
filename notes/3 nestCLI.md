@@ -48,6 +48,9 @@ nest start --watch // 改动文件之后自动重新 build
 nest start --debug // 启动调试的 websocket 服务，用来 debug
 
 nest info // 查看项目信息的，包括系统信息、node、npm 和依赖版本
+
+# graphql resolver
+nest g resolver student
 ```
 
 ## nestCLI.json

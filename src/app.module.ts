@@ -57,9 +57,13 @@ import { SocketChatroomModule } from './socket-chatroom/socket-chatroom.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisFollowingModule } from './redis-following/redis-following.module';
 import { RedisRankingModule } from './redis-ranking/redis-ranking.module';
+import { TestGraphqlModule } from './test-graphql/test-graphql.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { graphqlConfig } from './test-graphql/graphqlConfig';
 
 @Module({
   imports: [
+    GraphQLModule.forRoot(graphqlConfig),
     EventEmitterModule.forRoot(),
     ScheduleModule.forRoot(),
     TypeOrmModule.forRoot(AppDataSource),
@@ -109,6 +113,7 @@ import { RedisRankingModule } from './redis-ranking/redis-ranking.module';
     PrismaModule,
     RedisFollowingModule,
     RedisRankingModule,
+    TestGraphqlModule,
     // MinioModule,
   ],
   controllers: [AppController],

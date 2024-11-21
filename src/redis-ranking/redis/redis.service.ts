@@ -9,7 +9,7 @@ export class RedisService {
   async zRankingList(key: string, start: number = 0, end: number = -1) {
     const keys = await this.redisClient.zRange(key, start, end, {
       // TODO 会报错
-      rev: true,
+      REV: true,
     });
     const rankingList = {};
     for (let i = 0; i < keys.length; i++) {
