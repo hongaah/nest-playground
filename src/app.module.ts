@@ -56,6 +56,7 @@ import { i18nConfig } from 'src/test-i18n/i18nConfig';
 import { SocketChatroomModule } from './socket-chatroom/socket-chatroom.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisFollowingModule } from './redis-following/redis-following.module';
+import { RedisRankingModule } from './redis-ranking/redis-ranking.module';
 
 @Module({
   imports: [
@@ -107,6 +108,7 @@ import { RedisFollowingModule } from './redis-following/redis-following.module';
     SocketChatroomModule,
     PrismaModule,
     RedisFollowingModule,
+    RedisRankingModule,
     // MinioModule,
   ],
   controllers: [AppController],
