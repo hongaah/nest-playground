@@ -1,8 +1,11 @@
 # Nest 集成 Prisma
 
+📄 schema.prisma：prisma\schema.part1.prisma 改名：schema.prisma
+🛢 env 的 DATABASE_URL 修改为 "mysql://root:hazel@localhost:3306/prisma_test"
+
 ```sh
 pnpm add -D prisma
-pnpm add @prisma/client 
+pnpm add @prisma/client
 
 # 初始化 prisma
 npx prisma init --datasource-provider mysql

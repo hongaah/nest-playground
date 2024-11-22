@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/client"
 }
 
 datasource db {
@@ -14,9 +13,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model TodoItem {
+// 一对多
+model Department {
   id        Int    @id @default(autoincrement())
-  content    String  @db.VarChar(50)
+  name      String  @db.VarChar(20)
   createTime DateTime @default(now())
   updateTime DateTime @updatedAt
+  employees     Employee[]
+}
+
+model Employee {
+  id         Int       @id @default(autoincrement())
+  name      String     @db.VarChar(20)
+  phone     String     @db.VarChar(30)  
+  deaprtmentId Int
+  department     Department      @relation(fields: [deaprtmentId], references: [id])
 }

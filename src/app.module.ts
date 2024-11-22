@@ -60,6 +60,7 @@ import { RedisRankingModule } from './redis-ranking/redis-ranking.module';
 import { TestGraphqlModule } from './test-graphql/test-graphql.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { graphqlConfig } from './test-graphql/graphqlConfig';
+import { GraphqlTodolistModule } from './graphql-todolist/graphql-todolist.module';
 
 @Module({
   imports: [
@@ -114,6 +115,7 @@ import { graphqlConfig } from './test-graphql/graphqlConfig';
     RedisFollowingModule,
     RedisRankingModule,
     TestGraphqlModule,
+    GraphqlTodolistModule,
     // MinioModule,
   ],
   controllers: [AppController],

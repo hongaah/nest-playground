@@ -36,6 +36,10 @@ generator client {
 }
 ```
 
+#### ERROR: EPERM: operation not permitted, rename 'D:\code\nest-playground\node_modules\.pnpm\@prisma+client@5.22.0_prisma@5.22.0\node_modules\.prisma\client\query_engine-windows.dll.node.tmp8988' -> 'D:\code\nest-playground\node_modules\.pnpm\@prisma+client@5.22.0_prisma@5.22.0\node_modules\.prisma\client\query_engine-windows.dll.node'
+
+重新安装依赖 + 修改 @prisma/client 的生成路径
+
 #### [generator](https://www.prisma.io/docs/orm/prisma-schema/overview/generators#community-generators) 除了可以生成 client 代码外，还可以生成别的东西。
 
 npm install --save-dev prisma-docs-generator

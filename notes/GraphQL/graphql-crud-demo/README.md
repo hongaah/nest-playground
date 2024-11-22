@@ -16,5 +16,5 @@ graphql 会暴露一个 post 接口，通过查询语言的语法就可以从通
 visit http://localhost:4000/ 可以在 sandbox 页面里调试接口
 
 2. 使用 @apollo/client, react 的 graphql 客户端
-🌰: src/test-apollo-server.js
+🌰: src/react
 
