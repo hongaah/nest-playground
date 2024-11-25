@@ -36,6 +36,25 @@
         "<node_internals>/**"
       ],
       "console": "integratedTerminal", // 用 vscode 的内置终端
+    },
+    {
+      "name": "调试 nest 源码",
+      "request": "launch",
+      "runtimeArgs": [
+        "run-script",
+        "start:dev"
+      ],
+      "runtimeExecutable": "npm",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/sample/01-cats-app/",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        // "!**/node_modules/**"
+      ],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
     }
   ]
 }
