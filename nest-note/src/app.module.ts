@@ -61,6 +61,7 @@ import { TestGraphqlModule } from './test-graphql/test-graphql.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { graphqlConfig } from './test-graphql/graphqlConfig';
 import { GraphqlTodolistModule } from './graphql-todolist/graphql-todolist.module';
+import { MyMicroModule } from './my-micro/my-micro.module';
 
 @Module({
   imports: [
@@ -116,6 +117,7 @@ import { GraphqlTodolistModule } from './graphql-todolist/graphql-todolist.modul
     RedisRankingModule,
     TestGraphqlModule,
     GraphqlTodolistModule,
+    MyMicroModule,
     // MinioModule,
   ],
   controllers: [AppController],
