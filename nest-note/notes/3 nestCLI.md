@@ -51,6 +51,10 @@ nest info // 查看项目信息的，包括系统信息、node、npm 和依赖�
 
 # graphql resolver
 nest g resolver student
+
+# nest 创建 monorepo 和 library
+nest g app xxx
+nest g lib xxx
 ```
 
 ## nestCLI.json
