@@ -13,6 +13,8 @@ npx prisma init --datasource-provider mysql
 npx prisma migrate reset
 # 初始化 prisma 的表结构，或修改 model 后生成迁移文件
 npx prisma migrate dev --name init
+# 如果 schema.prisma 生成出错可以重新生成
+npx prisma generate --schema prisma/schema.prisma
 
 nest g resource prisma --no-spec
 ```
