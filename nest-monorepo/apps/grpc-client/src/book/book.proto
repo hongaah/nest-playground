@@ -1,0 +1,23 @@
+// 定义使用 proto3 版本的语法
+syntax = "proto3";
+
+// 命名空间 当前包为 book
+package book;
+
+// 定义当前服务可以远程调用的方法
+service BookService {
+  // 查询书籍 定义一个 FindBook 方法，参数是 BookById，返回值是 Book
+  rpc FindBook (BookById) returns (Book) {}
+}
+
+// 定义参数的信息格式
+message BookById {
+  int32 id = 1;
+}
+
+// 定义返回的信息格式
+message Book {
+  int32 id = 1;
+  string name = 2;
+  string desc = 3;
+}

@@ -13,3 +13,6 @@ nest cli 支持 monorepo，只要执行 `nest g app xxx` 就会把项目变为 m
 🌰: nest-monorepo
 
 在一个现有的 nest 项目里运行 `nest g app xxx`，会将原有的代码迁移到 apps/[named] 下，然后创建一个新的 nest xxx 项目。
+
+http://localhost:3001/
+http://localhost:3000/aaa
