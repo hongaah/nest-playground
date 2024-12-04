@@ -11,8 +11,11 @@
     "deleteOutDir": true,
     "assets": [
       {
+        "include": "*.env", "watchAssets": true
+      },
+      {
         "include": "i18n/**/*", "watchAssets": true
       }
-    ]
+    ],
   }
 }

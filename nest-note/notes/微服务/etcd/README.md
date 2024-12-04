@@ -17,7 +17,7 @@ redis 也是 key-value 存储的，不用 redis 做配置中心和注册中心�
 
 查询、监听查询
 
-🌰 ：nest-note\notes\微服务\etcd\src\index.js
+🌰：nest-note\notes\微服务\etcd\src\index.js
 
 ```sh
 node ./src/index.js

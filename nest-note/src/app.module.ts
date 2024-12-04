@@ -10,6 +10,7 @@ import { MyWinstonLoggerModule } from './my-winston-logger/my-winston-logger.mod
 import { SwaggerModule } from './swagger/swagger.module';
 import { RedisModule } from './redis/redis.module';
 import { AopModule } from './aop/aop.module';
+import { ConfigModule } from '@nestjs/config';
 // import { APP_GUARD, APP_INTERCEPTOR, APP_PIPE, APP_FILTER } from '@nestjs/core';
 import {
   LogRouteMiddleware,
@@ -62,6 +63,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { graphqlConfig } from './test-graphql/graphqlConfig';
 import { GraphqlTodolistModule } from './graphql-todolist/graphql-todolist.module';
 import { MyMicroModule } from './my-micro/my-micro.module';
+import { MyMicroEtcdModule } from './my-micro-etcd/my-micro-etcd.module';
 
 @Module({
   imports: [
@@ -70,6 +72,10 @@ import { MyMicroModule } from './my-micro/my-micro.module';
     ScheduleModule.forRoot(),
     TypeOrmModule.forRoot(AppDataSource),
     I18nModule.forRoot(i18nConfig),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+    }),
     // TestTypeormModule,
     MyHttpModule,
     ProviderModule,
@@ -118,6 +124,7 @@ import { MyMicroModule } from './my-micro/my-micro.module';
     TestGraphqlModule,
     GraphqlTodolistModule,
     MyMicroModule,
+    MyMicroEtcdModule,
     // MinioModule,
   ],
   controllers: [AppController],

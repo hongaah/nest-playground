@@ -15,3 +15,13 @@ win10 安装包安装：nest-note\notes\微服务\etcd\README.md
 
 etcd 常用的命令有 put、get、del、watch 等。在 node 里可以通过 etcd3 这个包来操作 etcd server。封装一下就可以实现配置管理和服务注册、发现的功能。
 
+🌰: nest-note\notes\微服务\etcd\README.md
+
+## Nest 集成 Etcd 做注册中心、配置中心
+
+🌰：nest-note\src\my-micro-etcd
+
+简单例子 Etcd：nest-note\src\my-micro-etcd\my-micro-etcd.controller.ts
+动态模块 EtcdService：nest-note\src\my-micro-etcd\etcd\etcd.module.ts
+使用动态模块：nest-note\src\my-micro-etcd\aaa\aaa.controller.ts
+
