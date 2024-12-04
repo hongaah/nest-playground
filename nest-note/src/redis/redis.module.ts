@@ -7,6 +7,8 @@ import { RedisService as RedisEmailService } from 'src/email-login/redis/redis.s
 import { RedisService as RedisViewsService } from 'src/task-article-views/redis/redis.service';
 import { RedisService as RedisFllowingService } from 'src/redis-following/redis/redis.service';
 import { RedisService as RedisRankingService } from 'src/redis-ranking/redis/redis.service';
+import { RedisService as RedisGeoService } from 'src/nearby-search/redis/redis.service';
+
 import { createClient } from 'redis';
 
 export const REDIS_CLIENT = 'REDIS_CLIENT';
@@ -23,6 +25,7 @@ export const REDIS_CLIENT = 'REDIS_CLIENT';
     RedisViewsService,
     RedisFllowingService,
     RedisRankingService,
+    RedisGeoService,
     {
       // 通过 useFactory 的方式动态创建 provider，token 为 REDIS_CLIENT。
       provide: REDIS_CLIENT,
@@ -47,6 +50,7 @@ export const REDIS_CLIENT = 'REDIS_CLIENT';
     RedisViewsService,
     RedisFllowingService,
     RedisRankingService,
+    RedisGeoService,
   ],
 })
 export class RedisModule {}

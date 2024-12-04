@@ -64,6 +64,7 @@ import { graphqlConfig } from './test-graphql/graphqlConfig';
 import { GraphqlTodolistModule } from './graphql-todolist/graphql-todolist.module';
 import { MyMicroModule } from './my-micro/my-micro.module';
 import { MyMicroEtcdModule } from './my-micro-etcd/my-micro-etcd.module';
+import { NearbySearchModule } from './nearby-search/nearby-search.module';
 
 @Module({
   imports: [
@@ -125,6 +126,7 @@ import { MyMicroEtcdModule } from './my-micro-etcd/my-micro-etcd.module';
     GraphqlTodolistModule,
     MyMicroModule,
     MyMicroEtcdModule,
+    NearbySearchModule,
     // MinioModule,
   ],
   controllers: [AppController],
