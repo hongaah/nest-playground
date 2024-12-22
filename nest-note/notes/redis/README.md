@@ -22,6 +22,10 @@ msi - redis-cli.exe
 D:\Program Files\Redis>./redis-cli -h 127.0.0.1 -p 6379
 GUI：可视化操作 RedisInsight
 
+```sh docker
+
+```
+
 用途：
 1. 缓存：将查询结果缓存到 redis，下次查询直接从 redis 读取，减少数据库的查询压力。
 2. 直接作为存储数据的地方，因为 redis 本身是会做持久化的，也可以把数据直接保存在 redis 里，不存到 mysql。不过这样成本比较高，经常需要扩容。

@@ -7,3 +7,15 @@
 基本上，如果项目依赖别的服务，在单台机器跑的时候都是需要用 Docker Compose 的。
 
 <!-- TODO -->
+
+
+```sh
+
+docker run -d -p 3306:3306 -v /Users/hazel/docker-demo/mysql8:/var/lib/mysql --name mysql-container mysql:8.0
+docker run -d -p 6379:6379 -v /Users/hazel/docker-demo/redis:/data --name redis-container redis
+
+docker logs mysql-container
+docker logs redis-container
+docker logs nest-container
+
+```
