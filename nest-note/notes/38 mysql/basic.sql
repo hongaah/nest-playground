@@ -81,6 +81,8 @@ SELECT name, age, create_time FROM new_schema_demo.student order by create_time 
 -- REGEXP 正则匹配模糊查询
 -- [^....]匹配不包含在[ ]的字符
 SELECT * FROM new_schema_demo.student where name REGEXP '^[a-zA-Z]';
+-- 查询某个字段非空
+SELECT * FROM employees WHERE age IS NOT NULL;
 
 -- 分组统计
 -- 聚合函数：用于对数据的统计，比如 AVG、COUNT、SUM、MIN、MAX
