@@ -2,8 +2,6 @@
 dist
 node_modules
 /build
-# generated
-# generated-part1
 
 # Logs
 logs
