@@ -1,7 +1,7 @@
 # pm2 与 docker 结合起来运用，解决 docker 容器内 node 服务崩溃了重启问题，实现 docker 容器内进程的日志管理、进程管理和监控。
 
 # build stage
-FROM node:18 as build-stage
+FROM node:18 AS build-stage
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # production stage
-FROM node:18 as production-stage
+FROM node:18 AS production-stage
 
 COPY --from=build-stage /app/dist /app
 COPY --from=build-stage /app/package.json /app/package.json

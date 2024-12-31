@@ -24,6 +24,9 @@ docker run -d -p 3000:3000 --name nest-container nest-note
 docker logs nest-container
 docker logs mysql-container
 docker logs redis-container
+
+# 如果出现报错
+docker rm nest-container
 ```
 
 ## Docker Compose 的方式运行管理多个容器
@@ -34,6 +37,10 @@ docker stop nest-container mysql-container redis-container
 
 # 使用 docker-compose 运行 nest 项目，docker-compose 会把所有容器的日志合并输出
 docker-compose up
+# zsh: command not found: docker-compose
+brew install docker-compose
+
+
 ```
 
 ```yml :docker-compose.yml

@@ -1,24 +1,30 @@
-FROM node:18.0-alpine3.14 as build-stage
+FROM node:20-alpine3.16 AS build-stage
 
 WORKDIR /app
 
 COPY package.json .
 
-RUN npm install
+RUN npm config set registry https://registry.npmmirror.com/
+
+RUN npm install -g cnpm
+RUN cnpm install
 
 COPY . .
 
 RUN npm run build
 
 # production stage
-FROM node:18.0-alpine3.14 as production-stage
+FROM node:20-alpine3.16 AS production-stage
 
 COPY --from=build-stage /app/dist /app
 COPY --from=build-stage /app/package.json /app/package.json
 
 WORKDIR /app
 
-RUN npm install --production
+RUN npm config set registry https://registry.npmmirror.com/
+
+RUN npm install -g cnpm
+RUN cnpm install
 
 EXPOSE 3000
 

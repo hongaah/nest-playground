@@ -98,7 +98,7 @@ docker 容器内跑的是 linux 系统，各种镜像的 dockerfile 都会继承
 可以换成 alpine 的，这是一个 linux 发行版，主打的就是一个体积小，它去掉了很多 linux 里用不到的功能，使得镜像体积更小。
 
 ```
-FROM node:18.0-alpine3.14 as build-stage
+FROM node:18.0-alpine3.14 AS build-stage
 ```
 
 ## 镜像缓存
