@@ -1,0 +1,30 @@
+# version 是指定 docker-compose.yml 的版本，因为不同版本配置不同。
+version: '3.8'
+services:
+  nest-app:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    depends_on:
+      - mysql-container
+      - redis-container
+    # 把 mysql-container、redis-container 的 ports 映射去掉，指定桥接网络为 common-network
+    # 其实不指定 networks 也可以，docker-compose 会创建个默认的。
+    networks:
+      - common-network
+  mysql-container:
+    image: mysql:8.0
+    volumes:
+      - /Users/hazel/docker-demo/mysql8:/var/lib/mysql
+    networks:
+      - common-network
+  redis-container:
+    image: redis
+    volumes:
+      - /Users/hazel/docker-demo/redis:/data
+    networks:
+      - common-network
+# 通过 networks 指定创建的 common-network 桥接网络，网络驱动程序指定为 bridge。其实我们一直用的网络驱动程序都是 bridge，它的含义是容器的网络和宿主机网络是隔离开的，但是可以做端口映射。比如 -p 3000:3000、-p 3306:3306 这样。
+networks:
+  common-network:
+    driver: bridge
